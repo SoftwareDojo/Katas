@@ -10,7 +10,7 @@ namespace CSharpKatas.FearOfNumbers
         string[] DayNames { get; }
     }
 
-    internal enum TextKey
+    public enum TextKey
     {
         IsOk,
         IsNotOk,

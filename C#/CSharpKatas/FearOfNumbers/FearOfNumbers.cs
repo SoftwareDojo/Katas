@@ -12,6 +12,8 @@ namespace CSharpKatas.FearOfNumbers
 
         public FearOfNumbers() : this(DateTime.Now, GermanLanguage.DisplayName) { }
 
+        public FearOfNumbers(string language) : this(DateTime.Now, language) { }
+
         public FearOfNumbers(DateTime currentDate) : this(currentDate, GermanLanguage.DisplayName) { }
 
         public FearOfNumbers(DateTime currentDate, string language)
@@ -22,9 +24,9 @@ namespace CSharpKatas.FearOfNumbers
             m_Languages.Add(GermanLanguage.CultureName, new GermanLanguage());
             m_Languages.Add(EnglishLanguage.CultureName, new EnglishLanguage());
 
-            if (language.ToLower() == EnglishLanguage.DisplayName)
-                m_CurrentLanguage = EnglishLanguage.CultureName;
-            m_CurrentLanguage = GermanLanguage.CultureName;
+            m_CurrentLanguage = language.ToLower() == EnglishLanguage.DisplayName
+                ? EnglishLanguage.CultureName
+                : GermanLanguage.CultureName;
 
             m_Patients = new Dictionary<string, IPatient>();
         }
