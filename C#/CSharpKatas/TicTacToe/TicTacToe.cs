@@ -1,10 +1,9 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using CSharpKatas.TicTacToe.Refactoring;
 
 namespace CSharpKatas.TicTacToe
 {
-    public class TicTacToe
+    public class TicTacToeGame
     {
         private readonly IConsole m_Console;
         private readonly Player[] m_Players;
@@ -12,9 +11,9 @@ namespace CSharpKatas.TicTacToe
         internal const char EmptyCell = '0';
         private readonly char[] m_Cells;
 
-        public static TicTacToe Default()
+        public static TicTacToeGame Default()
         {
-            return new TicTacToe(
+            return new TicTacToeGame(
                 new ConsoleAdapter(), 
                 new[]
                 {
@@ -29,7 +28,7 @@ namespace CSharpKatas.TicTacToe
                 });
         }
 
-        public TicTacToe(IConsole console, char[] cells, Player[] player)
+        public TicTacToeGame(IConsole console, char[] cells, Player[] player)
         {
             m_Console = console;
             m_Cells = cells;

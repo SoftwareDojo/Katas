@@ -6,7 +6,7 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            var tto = TicTacToe.Default();
+            var tto = TicTacToeGame.Default();
             tto.Start();
         }
     }

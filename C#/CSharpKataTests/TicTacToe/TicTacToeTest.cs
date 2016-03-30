@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CSharpKatas.TicTacToe.Refactoring;
+﻿using CSharpKatas.TicTacToe;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 
 namespace CSharpKataTests.TicTacToe
 {
     [TestFixture]
     public class TicTacToeTest
     {
-        private const char s_E = CSharpKatas.TicTacToe.TicTacToe.EmptyCell;
+        private const char s_E = TicTacToeGame.EmptyCell;
         private const char s_X = 'X';
         private const char s_O = 'O';
 
@@ -34,7 +27,7 @@ namespace CSharpKataTests.TicTacToe
                 new Player("Player 2", s_O)
             };
 
-            var ttt = new CSharpKatas.TicTacToe.TicTacToe(new MockConsole(), cells, players);
+            var ttt = new TicTacToeGame(new MockConsole(), cells, players);
 
             // act
             bool result = ttt.PlayerWins(s_X);
@@ -55,7 +48,7 @@ namespace CSharpKataTests.TicTacToe
 
             var cells = new[] { s_X, s_X, s_X, s_O, s_O, s_O, s_X, s_X, s_X };
 
-            var ttt = new CSharpKatas.TicTacToe.TicTacToe(new MockConsole(), cells, players);
+            var ttt = new TicTacToeGame(new MockConsole(), cells, players);
 
             // act
             bool result = ttt.IsDraw();
@@ -63,17 +56,5 @@ namespace CSharpKataTests.TicTacToe
             // assert
             Assert.IsTrue(result);
         }
-    }
-
-    public class MockConsole : IConsole
-    {
-        public void WriteLine(string text) { }
-
-        public string ReadLine()
-        {
-            return string.Empty;
-        }
-
-        public void Clear() { }
     }
 }

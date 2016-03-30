@@ -67,16 +67,9 @@
     <Compile Include="Sudoku\LoadSquaresFromSimpleStringsExtension.cs" />
     <Compile Include="Sudoku\Sudoku.cs" />
     <Compile Include="Sudoku\Square.cs" />
-    <Compile Include="TicTacToe\Board.cs" />
-    <Compile Include="TicTacToe\Position.cs" />
-    <Compile Include="TicTacToe\Refactoring\Console.cs" />
-    <Compile Include="TicTacToe\Refactoring\Player.cs" />
-    <Compile Include="TicTacToe\Refactoring\Refactoring1.cs" />
-    <Compile Include="TicTacToe\Refactoring\Original.cs" />
-    <Compile Include="TicTacToe\Refactoring\Refactoring2.cs" />
+    <Compile Include="TicTacToe\Console.cs" />
+    <Compile Include="TicTacToe\Player.cs" />
     <Compile Include="TicTacToe\TicTacToe.cs" />
-    <Compile Include="TicTacToe\TicTacToeGame.cs" />
-    <Compile Include="TicTacToe\Token.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
