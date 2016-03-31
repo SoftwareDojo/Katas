@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CSharpKatas.ROT13;
+﻿using CSharpKatas.ROT13;
 using NUnit.Framework;
 
 namespace CSharpKataTests.ROT13
@@ -11,10 +6,30 @@ namespace CSharpKataTests.ROT13
     [TestFixture]
     public class Rot13Test
     {
-        [Test]
-        public void Encode()
+        [TestCase("Hello World", "uryyb jbeyq")]
+        public void Encode(string text, string expected)
         {
+            // arrange
             var rot13 = new Rot13();
+
+            // act
+            string actual = rot13.Encode(text);
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase("uryyb jbeyq", "hello world")]
+        public void Decode(string text, string expected)
+        {
+            // arrange
+            var rot13 = new Rot13();
+
+            // act
+            string actual = rot13.Decode(text);
+
+            // assert
+            Assert.AreEqual(expected, actual);
         }
     }
 }

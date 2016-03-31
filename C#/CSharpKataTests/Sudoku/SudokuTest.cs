@@ -91,21 +91,6 @@ namespace CSharpKataTests.Sudoku
         }
 
         [Test]
-        public void Test2()
-        {
-            new SudokuSolver2("394020670" +
-                             "000300400" +
-                             "500690020" +
-                             "045000900" +
-                             "600000007" + 
-                             "007000580" + 
-                             "010067008" + 
-                             "009008000" + 
-                             "026400735").solve();
-            Console.Read();
-        }
-
-        [Test]
         public void Test_4xSquare_GetAllValues()
         {
             // arrange

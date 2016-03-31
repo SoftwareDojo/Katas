@@ -1,33 +1,70 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CSharpKatas.ROT13
 {
     public class Rot13
     {
-        private readonly char[] m_CharTable;
+        private readonly Dictionary<int, int> m_EncodeTable; 
 
         public Rot13()
         {
-            m_CharTable = new char[char.MaxValue];
+            m_EncodeTable = new Dictionary<int, int>();
 
-            for (int i = 48; i < 58; i++)
+            // numbers 
+            //for (int i = 48; i < 58; i++)
+            //{
+            //    m_EncodeTable.Add(i, i+13);
+            //}
+
+            // abc
+            for (int i = 97; i < 123; i++)
             {
-                m_CharTable[i-48] = (char)i;
-            }
+                int index = i + 13;
+                if (i > 108) index = i - 13;
 
-            // 48 - 57 (numbers) / 65 - 90 (letters)
-
-            for (int i = 65; i < 91; i++)
-            {
-                m_CharTable[i] = (char)i;
+                m_EncodeTable.Add(i, index);
             }
         }
 
+        public string Encode(string text)
+        {
+            text = TextNormalize(text.ToLower());
+            var chars = text.ToCharArray();
+
+            for (int i = 0; i < chars.Length; i++)
+            {
+                if (m_EncodeTable.ContainsKey(chars[i]))
+                {
+                    chars[i] = (char)m_EncodeTable[chars[i]];
+                }
+            }
+
+            return new string(chars);
+        }
+
+        public string Decode(string text)
+        {
+            var chars = text.ToLower().ToCharArray();
+
+            for (int i = 0; i < chars.Length; i++)
+            {
+                if (m_EncodeTable.ContainsKey(chars[i]))
+                {
+                    chars[i] = (char)m_EncodeTable[chars[i]];
+                }
+            }
+
+            return new string(chars);
+        }
+
+        private string TextNormalize(string text)
+        {
+            text = text.Replace("ä", "ae");
+            text = text.Replace("ö", "oe");
+            text = text.Replace("ü", "ue");
+            text = text.Replace("ß", "ss");
+
+            return text;
+        }
     }
-
-
 }
