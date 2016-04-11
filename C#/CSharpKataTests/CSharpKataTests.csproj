@@ -53,6 +53,7 @@
     <Compile Include="HarryPotter\CartTests.cs" />
     <Compile Include="LuckyNumbers\LuckyNumbersTest.cs" />
     <Compile Include="OddEven\OddEvenTest.cs" />
+    <Compile Include="Playlist\PlaylistTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RomanNumbers\RomanNumbersTest.cs" />
     <Compile Include="ROT13\Rot13Test.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Sudoku\SudokuTest.cs" />
     <Compile Include="TicTacToe\MockConsole.cs" />
     <Compile Include="TicTacToe\TicTacToeTest.cs" />
+    <Compile Include="WordWrap\WordWrapTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CSharpKatas\CSharpKatas.csproj">

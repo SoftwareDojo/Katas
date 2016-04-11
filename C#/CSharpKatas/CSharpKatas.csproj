@@ -60,6 +60,7 @@
     <Compile Include="HarryPotter\Order.cs" />
     <Compile Include="LuckyNumbers\LuckyNumbers.cs" />
     <Compile Include="OddEven\OddEven.cs" />
+    <Compile Include="Playlist\Playlist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RomanNumbers\RomanNumbers.cs" />
     <Compile Include="ROT13\Rot13.cs" />
@@ -70,8 +71,11 @@
     <Compile Include="TicTacToe\Console.cs" />
     <Compile Include="TicTacToe\Player.cs" />
     <Compile Include="TicTacToe\TicTacToe.cs" />
+    <Compile Include="WordWrap\WordWrap.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Playlist\SongLibrary.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
