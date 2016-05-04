@@ -19,7 +19,7 @@ namespace CSharpKataTests.Bowling
             // act
             for (int i = 0; i < 20; i++)
             {
-                bowling.Roll(pins);
+                bowling.Throw(pins);
             }
 
             // assert
@@ -44,8 +44,8 @@ namespace CSharpKataTests.Bowling
             // act
             for (int i = 0; i < 10; i++)
             {
-                bowling.Roll(pins);
-                bowling.Roll(0);
+                bowling.Throw(pins);
+                bowling.Throw(0);
             }
 
             // assert
@@ -69,11 +69,11 @@ namespace CSharpKataTests.Bowling
             // act
             for (int i = 0; i < 10; i++)
             {
-                bowling.Roll(pins);
-                bowling.Roll(10-pins);
+                bowling.Throw(pins);
+                bowling.Throw(10-pins);
             }
 
-            bowling.Roll(pins);
+            bowling.Throw(pins);
 
             // assert
             Assert.AreEqual(expected, bowling.TotalScore());
@@ -97,8 +97,8 @@ namespace CSharpKataTests.Bowling
             // act
             for (int i = 0; i < 10; i++)
             {
-                bowling.Roll(0);
-                bowling.Roll(pins);
+                bowling.Throw(0);
+                bowling.Throw(pins);
             }
 
             // assert
@@ -117,9 +117,9 @@ namespace CSharpKataTests.Bowling
             var bowling = new Game();
 
             // act
-            bowling.Roll(pins1);
-            bowling.Roll(pins2);
-            bowling.Roll(3);
+            bowling.Throw(pins1);
+            bowling.Throw(pins2);
+            bowling.Throw(3);
 
             // assert
             Assert.AreEqual(16, bowling.TotalScore());
@@ -132,9 +132,9 @@ namespace CSharpKataTests.Bowling
             var bowling = new Game();
 
             // act
-            bowling.Roll(10);
-            bowling.Roll(3);
-            bowling.Roll(4);
+            bowling.Throw(10);
+            bowling.Throw(3);
+            bowling.Throw(4);
 
             // assert
             Assert.AreEqual(24, bowling.TotalScore());
@@ -149,11 +149,59 @@ namespace CSharpKataTests.Bowling
             // act
             for (int i = 0; i < 12; i++)
             {
-                bowling.Roll(10);
+                bowling.Throw(10);
             }
 
             // assert
             Assert.AreEqual(300, bowling.TotalScore());
+        }
+
+        [Test]
+        public void Scoring_Spare()
+        {
+            // arrange
+            var bowling = new Game();
+            bowling.Throw(9);
+            bowling.Throw(1);
+
+            // act
+            var score = bowling.TotalScore();
+            var scoreBoard = bowling.ScoreBoard();
+
+            // assert
+            Assert.AreEqual(10, score);
+            Assert.IsTrue(scoreBoard.StartsWith("Frame 1: 10 = 9 /"));
+        }
+
+        [Test]
+        public void Scoring_Strike()
+        {
+            // arrange
+            var bowling = new Game();
+            bowling.Throw(10);
+
+            // act
+            var score = bowling.TotalScore();
+            var scoreBoard = bowling.ScoreBoard();
+
+            // assert
+            Assert.AreEqual(10, score);
+            Assert.IsTrue(scoreBoard.StartsWith("Frame 1: 10 = X"));
+        }
+
+        [Test]
+        public void ScoreBoard_PerfectGame()
+        {
+            // arrange
+            var bowling = new Game();
+
+            for (int i = 0; i < 12; i++)
+            {
+                bowling.Throw(10);
+            }
+
+            // act and assert
+            Assert.IsTrue(bowling.ScoreBoard().Contains("Frame 10: 300 = X X X"));
         }
 
         [Test]
@@ -163,61 +211,61 @@ namespace CSharpKataTests.Bowling
             var bowling = new Game();
 
             // act
-            bowling.Roll(1);
+            bowling.Throw(1);
             Assert.AreEqual(1, bowling.Frames[0].Score());
-            bowling.Roll(4);
+            bowling.Throw(4);
             Assert.AreEqual(5, bowling.Frames[0].Score());
 
-            bowling.Roll(4);
+            bowling.Throw(4);
             Assert.AreEqual(4, bowling.Frames[1].Score());
-            bowling.Roll(5);
+            bowling.Throw(5);
             Assert.AreEqual(9, bowling.Frames[1].Score());
 
-            bowling.Roll(6);
+            bowling.Throw(6);
             Assert.AreEqual(6, bowling.Frames[2].Score());
-            bowling.Roll(4);
+            bowling.Throw(4);
             Assert.AreEqual(10, bowling.Frames[2].Score());
 
-            bowling.Roll(5);
+            bowling.Throw(5);
             Assert.AreEqual(15, bowling.Frames[2].Score());
             Assert.AreEqual(5, bowling.Frames[3].Score());
-            bowling.Roll(5);
+            bowling.Throw(5);
             Assert.AreEqual(15, bowling.Frames[2].Score());
             Assert.AreEqual(10, bowling.Frames[3].Score());
 
-            bowling.Roll(10);
+            bowling.Throw(10);
             Assert.AreEqual(20, bowling.Frames[3].Score());
             Assert.AreEqual(10, bowling.Frames[4].Score());
 
-            bowling.Roll(0);
+            bowling.Throw(0);
             Assert.AreEqual(10, bowling.Frames[4].Score());
             Assert.AreEqual(0, bowling.Frames[5].Score());
-            bowling.Roll(1);
+            bowling.Throw(1);
             Assert.AreEqual(11, bowling.Frames[4].Score());
             Assert.AreEqual(1, bowling.Frames[5].Score());
 
-            bowling.Roll(7);
+            bowling.Throw(7);
             Assert.AreEqual(7, bowling.Frames[6].Score());
-            bowling.Roll(3);
+            bowling.Throw(3);
             Assert.AreEqual(10, bowling.Frames[6].Score());
 
-            bowling.Roll(6);
+            bowling.Throw(6);
             Assert.AreEqual(16, bowling.Frames[6].Score());
             Assert.AreEqual(6, bowling.Frames[7].Score());
-            bowling.Roll(4);
+            bowling.Throw(4);
             Assert.AreEqual(10, bowling.Frames[7].Score());
 
-            bowling.Roll(10);
+            bowling.Throw(10);
             Assert.AreEqual(20, bowling.Frames[7].Score());
             Assert.AreEqual(10, bowling.Frames[8].Score());
 
-            bowling.Roll(2);
+            bowling.Throw(2);
             Assert.AreEqual(12, bowling.Frames[8].Score());
             Assert.AreEqual(2, bowling.Frames[9].Score());
-            bowling.Roll(8);
+            bowling.Throw(8);
             Assert.AreEqual(20, bowling.Frames[8].Score());
             Assert.AreEqual(10, bowling.Frames[9].Score());
-            bowling.Roll(6);
+            bowling.Throw(6);
             Assert.AreEqual(20, bowling.Frames[8].Score());
             Assert.AreEqual(16, bowling.Frames[9].Score());
 

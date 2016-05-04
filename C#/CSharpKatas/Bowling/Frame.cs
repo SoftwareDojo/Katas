@@ -1,50 +1,80 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CSharpKatas.Bowling
 {
     public class Frame
     {
-        public Frame NextFrame { get; set; }
-        public IList<Roll> Rolls { get; }
-        public int Number { get; }
+        private const string s_Strike = "X";
+        private const string s_Spare = "/";
+        private const string s_WhiteSpace = " ";
+        private readonly IList<int> m_Throws;
 
-        public Frame(int number)
+        public Frame NextFrame { private get; set; }
+
+        public Frame()
         {
-            Rolls = new List<Roll>();
-            Number = number;
+            m_Throws = new List<int>();
         }
 
-        public void Roll(int pins)
+        public int GetThrowCount => m_Throws.Count;
+
+        public void Throw(int pins)
         {
-            Rolls.Add(new Roll(pins));
+            if (pins < 0 || pins > Game.MaxPins) throw new ArgumentException("Invalid number of pins");
+            m_Throws.Add(pins);
         }
 
         public int Score()
         {
-            int result = Rolls.Sum(r => r.Pins);
-            if (result < 10 || NextFrame == null) return result;
+            int result = m_Throws.Sum();
+            // no spare/strike or next frame isn't available
+            if (result < Game.MaxPins || !AreThrowsAavailable(NextFrame)) return result;
 
-            result += NextFrame.Rolls[0].Pins;
-            if (Rolls.Count > 1) return result;
+            // spare
+            result += NextFrame.m_Throws[0];
+            if (m_Throws.Count > 1) return result;
 
-            if (NextFrame.Rolls.Count == 1 && NextFrame.NextFrame != null)
-                result += NextFrame.NextFrame.Rolls[0].Pins;
-            else if (NextFrame.Rolls.Count > 1)
-                result += NextFrame.Rolls[1].Pins;
+            // strike
+            if (NextFrame.m_Throws.Count == 1 && AreThrowsAavailable(NextFrame.NextFrame)) result += NextFrame.NextFrame.m_Throws[0];
+            else if (NextFrame.m_Throws.Count > 1) result += NextFrame.m_Throws[1];
 
             return result;
         }
 
-        public override string ToString()
+        public string GetThrows()
         {
-            string  txt = "Frame "+Number+": " + Score() + " = ";
-            foreach (var roll in Rolls)
+            string rolls = string.Empty;
+            int sum = 0;
+
+            foreach (var roll in m_Throws)
             {
-                txt += roll + "+";
+                if (roll == Game.MaxPins)
+                {
+                    rolls += s_WhiteSpace + s_Strike;
+                    continue;
+                }
+
+                sum += roll;
+
+                if (sum == Game.MaxPins)
+                {
+                    sum -= Game.MaxPins;
+                    rolls += s_WhiteSpace + s_Spare;
+                }
+                else
+                {
+                    rolls += s_WhiteSpace + roll;
+                }
             }
 
-            return txt.Substring(0, txt.Length - 1);
+            return rolls.Trim();
+        }
+
+        public bool AreThrowsAavailable(Frame frame)
+        {
+            return frame != null && frame.m_Throws.Count > 0;
         }
     }
 }

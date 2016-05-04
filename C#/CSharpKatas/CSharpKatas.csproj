@@ -43,7 +43,6 @@
     <Compile Include="ABC\ABCProblem.cs" />
     <Compile Include="Bowling\Frame.cs" />
     <Compile Include="Bowling\Game.cs" />
-    <Compile Include="Bowling\Roll.cs" />
     <Compile Include="Calc\Calc.cs" />
     <Compile Include="Calc\NodeFactory.cs" />
     <Compile Include="Calc\OperationNode.cs" />

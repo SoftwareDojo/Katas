@@ -1,53 +1,57 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace CSharpKatas.Bowling
 {
     public class Game
     {
-        public IList<Frame> Frames { get; }
+        public const int MaxPins = 10;
+        public const int MaxBalls = 2;
+        private const int s_FrameCount = 10;
+        private int m_CurrentFrameIndex;
+        internal IList<Frame> Frames { get; }
 
         public Game()
         {
             Frames = new List<Frame>();
+
+            for (int i = 0; i < s_FrameCount; i++) Frames.Add(new Frame());
+            for (int i = 0; i < s_FrameCount-1; i++) Frames[i].NextFrame = Frames[i + 1];
+
+            m_CurrentFrameIndex = 0;
         }
 
-        public void Roll(int pins)
+        public void Throw(int pins)
         {
-            var frame = GetCurrentFrame();
+            var frame = Frames[m_CurrentFrameIndex];
+            frame.Throw(pins);
 
-            if (Frames.Count != 10 &&
-                (frame == null || frame.Rolls.Count() == 2 || frame.Score() >= 10))
-            {
-                var newframe = CreateFrame();
-                if (frame != null) frame.NextFrame = newframe;
-                frame = newframe;
-            }
-
-            frame.Roll(pins);
+            if (m_CurrentFrameIndex < s_FrameCount - 1 && (frame.GetThrowCount == MaxBalls || frame.Score() >= MaxPins))
+                m_CurrentFrameIndex++;
         }
 
         public string ScoreBoard()
         {
-            return string.Empty;
+            var scoreboard = new StringBuilder();
+            var score = 0;
+
+            for (int i = 0; i < s_FrameCount; i++)
+            {
+                score += Frames[i].Score();
+                string frame = $"Frame {i + 1}:";
+
+                var throws = Frames[i].GetThrows();
+                if (string.IsNullOrEmpty(throws)) scoreboard.AppendLine(frame);
+                else scoreboard.AppendLine(frame + $" {score} = {throws}");             
+            }
+
+            return scoreboard.ToString();
         }
 
         public int TotalScore()
         {
             return Frames.Sum(f => f.Score());
-        }
-
-        private Frame GetCurrentFrame()
-        {
-            int frameCount = Frames.Count;
-            return frameCount == 0 ? null : Frames[frameCount - 1];
-        }
-
-        private Frame CreateFrame()
-        {
-            var frame = new Frame(Frames.Count);
-            Frames.Add(frame);
-            return frame;
         }
     }
 }
