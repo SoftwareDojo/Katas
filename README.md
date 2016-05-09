@@ -7,12 +7,14 @@ Coding Katas for C#, C++, Python and TypeScript! For more information, go to the
 
 Easy:
 --------------
-* Fizz Buzz
-* OddEven
+* [Fizz Buzz](../../wiki/FizzBuzz)
+* [OddEven](../../wiki/OddEven)
 * String Calculator
 * ABC Problem
 * LuckyNumbers (Glückliche Zahlen)
 * ROT13
+* WordWrap
+* Yatzy
 
 Medium:
 --------------

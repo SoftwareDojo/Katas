@@ -63,6 +63,7 @@
     <Compile Include="TicTacToe\MockConsole.cs" />
     <Compile Include="TicTacToe\TicTacToeTest.cs" />
     <Compile Include="WordWrap\WordWrapTest.cs" />
+    <Compile Include="Yatzy\YatzyTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CSharpKatas\CSharpKatas.csproj">

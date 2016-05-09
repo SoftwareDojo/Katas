@@ -71,6 +71,7 @@
     <Compile Include="TicTacToe\Player.cs" />
     <Compile Include="TicTacToe\TicTacToe.cs" />
     <Compile Include="WordWrap\WordWrap.cs" />
+    <Compile Include="Yatzy\Yatzy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Playlist\SongLibrary.xml" />
