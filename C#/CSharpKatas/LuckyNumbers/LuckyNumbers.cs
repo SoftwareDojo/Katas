@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CSharpKatas.LuckyNumbers
 {
@@ -6,67 +8,74 @@ namespace CSharpKatas.LuckyNumbers
     {
         public string GetLuckyNumbers(int range)
         {
-            return PrintResult(FindLuckyNumbers(range));
+            return string.Join(",", FindLuckyNumbers(range));
         }
 
         public string GetLuckyPrimeNumbers(int range)
         {
-            bool[] numbers = FindLuckyNumbers(range);
+            var numbers = FindLuckyNumbers(range);
+            RemovePrimes(numbers);
 
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                if (numbers[i]) continue;
-                numbers[i] = !IsPrimeNumber(i+1);
-            }
-
-            return PrintResult(numbers);
+            return string.Join(",", numbers);
         }
 
-        private bool[] FindLuckyNumbers(int range)
+        private void RemovePrimes(IList<int> numbers)
         {
-            if (range < 1) range = 0;
-            bool[] numbers = new bool[range];
-            int luckyCounter = 2;
-
-            while (luckyCounter < numbers.Length)
+            IList<int> toRemove = new List<int>();
+            foreach (var number in numbers)
             {
-                luckyCounter = StrikeOutNumbers(numbers, luckyCounter);
+                if (!IsPrimeNumber(number)) toRemove.Add(number);
+            }
+
+            foreach (var number in toRemove)
+            {
+                numbers.Remove(number);
+            }
+        }
+
+        private IList<int> FindLuckyNumbers(int range)
+        {
+            IList<int> numbers = CreateRange(1, range);
+
+            int count = 2;
+            while (count != 0 && count <= numbers.Count)
+            {
+                count = RemoveNumbers(numbers, count);
             }
 
             return numbers;
         }
 
-        private int StrikeOutNumbers(bool[] numbers, int luckyCounter)
+        private int RemoveNumbers(IList<int> numbers, int count)
         {
-            int strikeCounter = 0;
+            IList<int> toRemove = new List<int>();
+            int index = -1 + count;
 
-            for (int i = 0; i < numbers.Length; i++)
+            while (index < numbers.Count)
             {
-                if (numbers[i]) continue;
-                strikeCounter++;
-                
-                if (strikeCounter == luckyCounter)
-                {
-                    numbers[i] = true;
-                    strikeCounter = 0;
-                }
+                toRemove.Add(numbers[index]);
+                index += count;
             }
 
-            return GetLuckyCounter(numbers, luckyCounter);
-        }
-
-        private int GetLuckyCounter(bool[] numbers, int skip)
-        {
-            if (skip >= numbers.Length) return numbers.Length;
-
-            for (int i = skip; i < numbers.Length; i++)
+            foreach (var number in toRemove)
             {
-                if (!numbers[i]) return i+1;
+                numbers.Remove(number);
             }
 
-            return numbers.Length;
-        }
+            return numbers.FirstOrDefault(n => n > count);
+        }	 
 
+        private IList<int> CreateRange(int from, int to)
+        {
+            var numbers = new List<int>();
+            for (int i = from; i <= to; i++)
+            {
+                numbers.Add(i);
+            }
+
+            return numbers;
+        }
+        
         private static bool IsPrimeNumber(int number)
         {
             if (number == 1) return false;
@@ -77,20 +86,6 @@ namespace CSharpKatas.LuckyNumbers
             }
 
             return true;
-        }
-
-        private static string PrintResult(bool[] numbers)
-        {
-            string result = string.Empty;
-
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                if (!numbers[i]) result = result + (i+1) + ",";
-            }
-
-            if (!string.IsNullOrEmpty(result)) result = result.Substring(0, result.Length - 1);
-
-            return result;
         }
     }
 }
