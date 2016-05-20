@@ -1,4 +1,6 @@
 language: csharp
 solution: C#/CSharpKatas.sln
+before_script:
+  - chmod +x C#/scripts
 script:
   - C#/scripts/travis_build.sh
