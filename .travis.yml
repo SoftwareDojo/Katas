@@ -1,2 +1,4 @@
 language: csharp
 solution: C#/CSharpKatas.sln
+script:
+  - C#/scripts/travis_build.sh
