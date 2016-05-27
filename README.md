@@ -9,19 +9,19 @@ Easy:
 --------------
 * [Fizz Buzz](../../wiki/FizzBuzz)
 * [OddEven](../../wiki/OddEven)
-* String Calculator
-* ABC Problem
-* LuckyNumbers (Glückliche Zahlen)
+* [String Calculator](../../wiki/StringCalculator)
+* [ABC Problem](../../wiki/ABCProblem)
+* LuckyNumbers
 * ROT13
 * WordWrap
 * Yatzy
 
 Medium:
 --------------
-* RomanNumbers (Römische Zahlen)
-* GoldbachsConjecture (Goldbachsche Vermutung)
+* RomanNumbers
+* GoldbachsConjecture
 * Harry Potter
-* FearOfNumbers (Angst vor Zahlen)
+* FearOfNumbers
 * Bowling
 * TicTacToe
 
