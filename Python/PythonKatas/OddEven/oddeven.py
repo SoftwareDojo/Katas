@@ -14,13 +14,9 @@ class OddEven(object):
         return OddEven.Odd
 
     def convert_range(start, stop):
-        result = ""
-        for x in range(start, stop):
-            result += str(OddEven.convert(x)) + " "
-        return result.rstrip()
+        return ' '.join(str(OddEven.convert(x)) for x in range(start, stop))
 
     def convert_with_string(number):
-
         if (str(number).endswith("0") or 
             str(number).endswith("2") or 
             str(number).endswith("4") or 
@@ -35,14 +31,9 @@ class OddEven(object):
 
     def __is_prime(n):
         if n == 2 or n == 3: return True
-        if n < 2 or n%2 == 0: return False
-        if n < 9: return True
-        if n%3 == 0: return False
-  
-        r = int(n**0.5)
-        f = 5
-        while f <= r:
-            if n%f == 0: return False
-            if n%(f+2) == 0: return False
-            f +=6
-        return True 
+        if n%2 == 0 or n < 2: return False
+        for i in range(3,int(n**0.5)+1,2):
+            if n%i == 0:
+                return False    
+
+        return True

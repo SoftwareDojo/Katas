@@ -15,10 +15,8 @@ class Test_stringcalculator(unittest.TestCase):
         testcases["1,2,3"] = 6
         testcases["1,2,3,4,5,6,7,8,9"] = 45
 
-        calc = stringcalculator.stringcalculator
-
         for key, value in testcases.items():
-            result = calc.add(key, ",")
+            result = stringcalculator.stringcalculator.add(key, ",")
             self.assertEqual(value, result)
 
 if __name__ == '__main__':

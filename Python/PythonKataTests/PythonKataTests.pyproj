@@ -6,7 +6,7 @@
     <ProjectGuid>671e8459-23e9-4e0b-831b-801f6e8a1593</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>PythonKataTests.py</StartupFile>
-    <SearchPath>..\PythonKatas\FizzBuzz\;..\PythonKatas\OddEven\;..\PythonKatas\StringCalculator\</SearchPath>
+    <SearchPath>..\PythonKatas\FizzBuzz\;..\PythonKatas\OddEven\;..\PythonKatas\StringCalculator\;..\PythonKatas\ABCProblem\;..\PythonKatas\LuckyNumbers\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>PythonKataTests</Name>
@@ -23,7 +23,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ABCProblem\test_abcproblem.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="FizzBuzz\test_fizzbuzz.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LuckyNumbers\test_luckynumbers.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="OddEven\test_oddeven.py">
@@ -43,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="FizzBuzz\" />
+    <Folder Include="ABCProblem\" />
+    <Folder Include="LuckyNumbers\" />
     <Folder Include="StringCalculator\" />
     <Folder Include="OddEven\" />
   </ItemGroup>

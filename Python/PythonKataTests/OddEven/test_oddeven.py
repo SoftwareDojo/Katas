@@ -16,17 +16,13 @@ class Test_oddeven(unittest.TestCase):
         testcases[9] = "Odd"
         testcases[10] ="Even"
 
-        oddEven = oddeven.OddEven
-
         for key, value in testcases.items():
-
-            result = oddEven.convert(key)
+            result = oddeven.OddEven.convert(key)
             self.assertEqual(value, result)
 
     def test_oddeven_range(self):
 
-        oddEven = oddeven.OddEven
-        actual = oddEven.convert_range(1,11)
+        actual = oddeven.OddEven.convert_range(1,11)
         self.assertEqual(actual, "Odd Even 3 Even 5 Even 7 Even Odd Even")
 
     def test_oddeven_with_string(self):
@@ -43,11 +39,8 @@ class Test_oddeven(unittest.TestCase):
         testcases[9] = "Odd"
         testcases[10] ="Even"
 
-        oddEven = oddeven.OddEven
-
         for key, value in testcases.items():
-
-            result = oddEven.convert_with_string(key)
+            result = oddeven.OddEven.convert_with_string(key)
             self.assertEqual(value, result)
 
 if __name__ == '__main__':

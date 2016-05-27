@@ -24,7 +24,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ABCProblem\abcproblem.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="FizzBuzz\fizzbuzz.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LuckyNumbers\luckynumbers.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="OddEven\oddeven.py">
