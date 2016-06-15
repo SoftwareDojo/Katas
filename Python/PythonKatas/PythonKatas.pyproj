@@ -40,11 +40,15 @@
     <Compile Include="StringCalculator\stringcalculator.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="WordWrap\wordwrap.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="FizzBuzz\" />
     <Folder Include="LuckyNumbers\" />
     <Folder Include="ABCProblem\" />
+    <Folder Include="WordWrap\" />
     <Folder Include="StringCalculator\" />
     <Folder Include="OddEven\" />
   </ItemGroup>

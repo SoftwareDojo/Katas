@@ -6,7 +6,7 @@
     <ProjectGuid>671e8459-23e9-4e0b-831b-801f6e8a1593</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>PythonKataTests.py</StartupFile>
-    <SearchPath>..\PythonKatas\FizzBuzz\;..\PythonKatas\OddEven\;..\PythonKatas\StringCalculator\;..\PythonKatas\ABCProblem\;..\PythonKatas\LuckyNumbers\</SearchPath>
+    <SearchPath>..\PythonKatas\FizzBuzz\;..\PythonKatas\OddEven\;..\PythonKatas\StringCalculator\;..\PythonKatas\ABCProblem\;..\PythonKatas\LuckyNumbers\;..\PythonKatas\WordWrap\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>PythonKataTests</Name>
@@ -39,6 +39,9 @@
     <Compile Include="StringCalculator\test_stringcalculator.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="WordWrap\test_wordwrap.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PythonKatas\PythonKatas.pyproj">
@@ -51,6 +54,7 @@
     <Folder Include="FizzBuzz\" />
     <Folder Include="ABCProblem\" />
     <Folder Include="LuckyNumbers\" />
+    <Folder Include="WordWrap\" />
     <Folder Include="StringCalculator\" />
     <Folder Include="OddEven\" />
   </ItemGroup>
