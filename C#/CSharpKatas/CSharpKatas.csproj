@@ -58,6 +58,7 @@
     <Compile Include="HarryPotter\Interfaces.cs" />
     <Compile Include="HarryPotter\Order.cs" />
     <Compile Include="LuckyNumbers\LuckyNumbers.cs" />
+    <Compile Include="MineField\MineField.cs" />
     <Compile Include="OddEven\OddEven.cs" />
     <Compile Include="Playlist\Playlist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

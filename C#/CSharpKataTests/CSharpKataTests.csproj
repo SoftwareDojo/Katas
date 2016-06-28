@@ -52,6 +52,7 @@
     <Compile Include="GoldbachsConjecture\GoldbachsConjectureTests.cs" />
     <Compile Include="HarryPotter\CartTests.cs" />
     <Compile Include="LuckyNumbers\LuckyNumbersTest.cs" />
+    <Compile Include="MineField\MineFieldTest.cs" />
     <Compile Include="OddEven\OddEvenTest.cs" />
     <Compile Include="Playlist\PlaylistTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

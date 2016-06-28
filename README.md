@@ -11,10 +11,11 @@ Easy:
 * [OddEven](../../wiki/OddEven)
 * [String Calculator](../../wiki/StringCalculator)
 * [ABC Problem](../../wiki/ABCProblem)
-* LuckyNumbers
-* ROT13
-* WordWrap
-* Yatzy
+* [LuckyNumbers](../../wiki/LuckyNumbers)
+* [ROT13](../../wiki/ROT13)
+* [WordWrap](../../wiki/WordWrap)
+* [Yatzy](../../wiki/Yatzy)
+* [Mine Field](../../wiki/MineField)
 
 Medium:
 --------------
