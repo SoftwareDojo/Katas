@@ -5,6 +5,7 @@ namespace CSharpKatas.MineField
     public class MineField
     {
         private const char s_NewLine = ';';
+        private const char s_Mine = '*';
         private const int s_MineValue = -1;
 
         public string CreateHint(string mines)
@@ -60,7 +61,7 @@ namespace CSharpKatas.MineField
 
                 for (int y = 0; y < mineLines[x].Length; y++)
                 {
-                    if (mineLines[x][y] == '*') result[x][y] = s_MineValue;
+                    if (mineLines[x][y] == s_Mine) result[x][y] = s_MineValue;
                     else result[x][y] = 0;
                 }
             }
@@ -70,7 +71,7 @@ namespace CSharpKatas.MineField
 
         private string ShowHintField(int[][] hint)
         {
-            string result = hint.Aggregate(string.Empty, (s, f) => s + (string.Join("", f).Replace("-1", "*") + s_NewLine));
+            string result = hint.Aggregate(string.Empty, (s, f) => s + (string.Join("", f).Replace(s_MineValue.ToString(), s_Mine.ToString()) + s_NewLine));
             return result.Substring(0, result.Length - 1);
         }
     }

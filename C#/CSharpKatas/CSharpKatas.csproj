@@ -68,7 +68,8 @@
     <Compile Include="Sudoku\LoadSquaresFromSimpleStringsExtension.cs" />
     <Compile Include="Sudoku\Sudoku.cs" />
     <Compile Include="Sudoku\Square.cs" />
-    <Compile Include="TicTacToe\Console.cs" />
+    <Compile Include="TicTacToe\ConsoleUserInterface.cs" />
+    <Compile Include="TicTacToe\IUserInterface.cs" />
     <Compile Include="TicTacToe\Player.cs" />
     <Compile Include="TicTacToe\TicTacToe.cs" />
     <Compile Include="WordWrap\WordWrap.cs" />

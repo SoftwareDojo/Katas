@@ -6,7 +6,7 @@ namespace CSharpKataTests.TicTacToe
     [TestFixture]
     public class TicTacToeTest
     {
-        private const char s_E = TicTacToeGame.EmptyCell;
+        private const char s_E = '0';
         private const char s_X = 'X';
         private const char s_O = 'O';
 

@@ -2,15 +2,33 @@
 
 namespace CSharpKataTests.TicTacToe
 {
-    public class MockConsole : IConsole
+    public class MockConsole : IUserInterface
     {
-        public void WriteLine(string text) { }
+        public char EmptyCell => '0';
 
-        public string ReadLine()
+        public string GetUserInput()
         {
             return string.Empty;
         }
 
-        public void Clear() { }
+        public void ShowEnd()
+        {
+
+        }
+
+        public void ShowInvalidChoice()
+        {
+
+        }
+
+        public void ShowTurn(Player[] players, string currentPlayerName, char[] cells)
+        {
+
+        }
+
+        public void ShowWin(string playerName, char[] cells)
+        {
+
+        }
     }
 }
