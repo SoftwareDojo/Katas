@@ -59,7 +59,6 @@
     <Compile Include="RomanNumbers\RomanNumbersTest.cs" />
     <Compile Include="ROT13\Rot13Test.cs" />
     <Compile Include="StringCalculator\StringCalculatorTests.cs" />
-    <Compile Include="Sudoku\SquareTest.cs" />
     <Compile Include="Sudoku\SudokuTest.cs" />
     <Compile Include="TicTacToe\MockConsole.cs" />
     <Compile Include="TicTacToe\TicTacToeTest.cs" />

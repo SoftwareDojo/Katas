@@ -65,9 +65,7 @@
     <Compile Include="RomanNumbers\RomanNumbers.cs" />
     <Compile Include="ROT13\Rot13.cs" />
     <Compile Include="StringCalculator\StringCalculator.cs" />
-    <Compile Include="Sudoku\LoadSquaresFromSimpleStringsExtension.cs" />
     <Compile Include="Sudoku\Sudoku.cs" />
-    <Compile Include="Sudoku\Square.cs" />
     <Compile Include="TicTacToe\ConsoleUserInterface.cs" />
     <Compile Include="TicTacToe\IUserInterface.cs" />
     <Compile Include="TicTacToe\Player.cs" />
