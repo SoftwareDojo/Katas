@@ -9,7 +9,9 @@ Easy:
 --------------
 * [Fizz Buzz](../../wiki/FizzBuzz)
 * [OddEven](../../wiki/OddEven)
+* [LeapYear](../../wiki/LeapYear)
 * [String Calculator](../../wiki/StringCalculator)
+* [CalcStats](../../wiki/CalcStats)
 * [ABC Problem](../../wiki/ABCProblem)
 * [LuckyNumbers](../../wiki/LuckyNumbers)
 * [ROT13](../../wiki/ROT13)

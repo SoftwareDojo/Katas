@@ -11,7 +11,7 @@ namespace KatasTests.CalcStats
             //act
             var actual = new Katas.CalcStats.CalcStats().GetStats("Min", new[] { 1, -1, 2, -2, 6, 9, 15, -2, 92, 11 });
             //assert
-            Assert.Equal("-2", actual);
+            Assert.Equal(-2, (int)actual);
         }
 
         [Fact]
@@ -21,7 +21,7 @@ namespace KatasTests.CalcStats
             //act
             var actual = new Katas.CalcStats.CalcStats().GetStats("Max", new[] { 1, -1, 2, -2, 6, 9, 15, -2, 92, 11 });
             //assert
-            Assert.Equal("92", actual);
+            Assert.Equal(92, (int)actual);
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace KatasTests.CalcStats
             //act
             var actual = new Katas.CalcStats.CalcStats().GetStats("Sum", new[] { 1, -1, 2, -2, 6, 9, 15, -2, 92, 11 });
             //assert
-            Assert.Equal("131", actual);
+            Assert.Equal(131, (int)actual);
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace KatasTests.CalcStats
             //act
             var actual = new Katas.CalcStats.CalcStats().GetStats("Average", new[] { 1, -1, 2, -2, 6, 9, 15, -2, 92, 11 });
             //assert
-            Assert.Equal("13.1", actual);
+            Assert.Equal(13.1, (double)actual);
         }
     }
 }
