@@ -1,6 +1,6 @@
 # Katas
 
-Coding Katas for C#, C++, Python and TypeScript! For more information, go to the Wiki.
+Coding Katas for C# (.Net Core), Python and TypeScript! For more information, go to the Wiki.
 
 
 # Catalogue
