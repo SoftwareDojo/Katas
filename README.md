@@ -1,6 +1,6 @@
 # Katas
 
-Coding Katas for C# (.Net Core), Python and TypeScript! For more information, go to the Wiki.
+Coding Katas for C# (.Net Core), Python and TypeScript! For more informations, click on the katas below.
 
 
 # Catalogue
@@ -21,14 +21,14 @@ Easy:
 
 Medium:
 --------------
-* RomanNumbers
-* GoldbachsConjecture
-* Harry Potter
-* FearOfNumbers
-* Bowling
-* TicTacToe
+* [RomanNumbers](../../wiki/RomanNumbers)
+* [GoldbachsConjecture](../../wiki/GoldbachsConjecture)
+* [Harry Potter](../../wiki/HarryPotter)
+* [FearOfNumbers](../../wiki/FearOfNumbers)
+* [Bowling](../../wiki/Bowling)
+* [TicTacToe](../../wiki/TicTacToe)
 
 Hard:
 --------------
-* Mathematical Expression Parser
-* Sudoku Solver
+* [Mathematical Expression Parser](../../wiki/Calc)
+* [Sudoku Solver](../../wiki/SudokuSolver)
