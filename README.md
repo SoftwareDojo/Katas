@@ -12,6 +12,8 @@ Easy:
 * [LeapYear](../../wiki/LeapYear)
 * [String Calculator](../../wiki/StringCalculator)
 * [CalcStats](../../wiki/CalcStats)
+* [Christmastree](../../wiki/Christmastree)
+* [PrimeFactor](../../wiki/PrimeFactor)
 * [ABC Problem](../../wiki/ABCProblem)
 * [LuckyNumbers](../../wiki/LuckyNumbers)
 * [ROT13](../../wiki/ROT13)
