@@ -7,6 +7,7 @@ namespace KatasTests.LeapYear
         [Theory]
         [InlineData(2013, false)]
         [InlineData(2001, false)]
+        [InlineData(2000, true)]
         [InlineData(1996, true)]
         [InlineData(1992, true)]
         public void IsLeapYearTest(int value, bool expected)
