@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("KatasTests")]
 
 namespace Katas.FearOfNumbers
 {

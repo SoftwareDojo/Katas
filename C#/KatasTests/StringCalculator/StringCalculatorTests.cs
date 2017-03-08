@@ -27,6 +27,7 @@ namespace KatasTests.StringCalculator
             Assert.Equal(expected, actual);
         }
 
+        [Theory]
         [InlineData("1#2", 3)]
         [InlineData("1#  #2", 3)]
         [InlineData("1gggd#2", 2)]
