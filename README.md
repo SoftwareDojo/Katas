@@ -20,6 +20,7 @@ Easy:
 * [WordWrap](../../wiki/WordWrap)
 * [Yatzy](../../wiki/Yatzy)
 * [Mine Field](../../wiki/MineField)
+* [OCR](../../wiki/OCR)
 
 Medium:
 --------------
