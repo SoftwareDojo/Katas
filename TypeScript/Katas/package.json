@@ -1,0 +1,10 @@
+{
+  "name": "katas",
+  "version": "0.0.0",
+  "description": "Katas",
+  "main": "app.js",
+  "author": {
+    "name": "SoftwareDojo"
+  },
+  "dependencies": {}
+}
