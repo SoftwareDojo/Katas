@@ -21,6 +21,7 @@ Easy:
 * [Yatzy](../../wiki/Yatzy)
 * [Mine Field](../../wiki/MineField)
 * [OCR](../../wiki/OCR)
+* [BinarySearch](../../wiki/BinarySearch)
 
 Medium:
 --------------
