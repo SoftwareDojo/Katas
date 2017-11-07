@@ -1,18 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>671e8459-23e9-4e0b-831b-801f6e8a1593</ProjectGuid>
+    <ProjectGuid>3d987ffc-9f31-4419-90fa-a37eda61392b</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>PythonKataTests.py</StartupFile>
-    <SearchPath>..\PythonKatas\FizzBuzz\;..\PythonKatas\OddEven\;..\PythonKatas\StringCalculator\;..\PythonKatas\ABCProblem\;..\PythonKatas\LuckyNumbers\;..\PythonKatas\WordWrap\</SearchPath>
+    <StartupFile>
+    </StartupFile>
+    <SearchPath>
+    </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>PythonKataTests</Name>
-    <RootNamespace>PythonKataTests</RootNamespace>
-    <InterpreterId>{9a7a9026-48c1-4688-9d5d-e5699d47d074}</InterpreterId>
-    <InterpreterVersion>3.5</InterpreterVersion>
+    <Name>Katas</Name>
+    <RootNamespace>Katas</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,50 +22,41 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ABCProblem\abcproblem.py" />
     <Compile Include="ABCProblem\test_abcproblem.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FizzBuzz\fizzbuzz.py" />
     <Compile Include="FizzBuzz\test_fizzbuzz.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="LuckyNumbers\luckynumbers.py" />
     <Compile Include="LuckyNumbers\test_luckynumbers.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="OddEven\oddeven.py" />
     <Compile Include="OddEven\test_oddeven.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PythonKataTests.py" />
+    <Compile Include="StringCalculator\stringcalculator.py" />
     <Compile Include="StringCalculator\test_stringcalculator.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="WordWrap\test_wordwrap.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="WordWrap\wordwrap.py" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PythonKatas\PythonKatas.pyproj">
-      <Name>PythonKatas</Name>
-      <Project>{4ad687cc-4849-47ad-a325-ee1cc733c51a}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FizzBuzz\" />
     <Folder Include="ABCProblem\" />
+    <Folder Include="ABCProblem\" />
+    <Folder Include="FizzBuzz\" />
     <Folder Include="LuckyNumbers\" />
     <Folder Include="WordWrap\" />
     <Folder Include="StringCalculator\" />
     <Folder Include="OddEven\" />
   </ItemGroup>
-  <ItemGroup>
-    <InterpreterReference Include="{9a7a9026-48c1-4688-9d5d-e5699d47d074}\3.5" />
-  </ItemGroup>
-  <PropertyGroup>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
-  </PropertyGroup>
-  <Import Condition="Exists($(PtvsTargetsFile))" Project="$(PtvsTargetsFile)" />
-  <Import Condition="!Exists($(PtvsTargetsFile))" Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
        Visual Studio and specify your pre- and post-build commands in
        the BeforeBuild and AfterBuild targets below. -->

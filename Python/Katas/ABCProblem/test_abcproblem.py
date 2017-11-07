@@ -1,17 +1,9 @@
 import unittest
 import abcproblem
 
-class Test_abcproblem(unittest.TestCase):
+class Test_test_abcproblem(unittest.TestCase):
     def test_check_word(self):
-        testcases = {}
-        testcases[""] = True
-        testcases["ABC"] = True
-        testcases["baRk"] = True
-        testcases["booK"] = False
-        testcases["treat"] = True
-        testcases["COMMON"] = False
-        testcases["squad"] = True
-        testcases["Confused"] = True
+        testcases = { "": True, "ABC": True, "baRk": True, "booK": False, "treat": True, "COMMON": False, "squad": True, "Confused": True}
 
         abc = abcproblem.ABCProblem()
 
