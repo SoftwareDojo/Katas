@@ -1,6 +1,6 @@
 # Katas (csharpcode.de)
 
-Coding Katas for C# (.Net Core), Python and TypeScript! For more informations, click on the katas below.
+Coding Katas for C#, F# (.Net Core), Python and TypeScript! For more informations, click on the katas below.
 
 
 # Catalogue
