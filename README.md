@@ -7,7 +7,7 @@ Coding Katas for C#, F# (.Net Core), Python and TypeScript! For more information
 
 Easy:
 --------------
-* [Fizz Buzz](../../wiki/FizzBuzz)
+* [Fizz Buzz](/Descriptions/FizzBuzz.md)
 * [OddEven](../../wiki/OddEven)
 * [LeapYear](../../wiki/LeapYear)
 * [String Calculator](../../wiki/StringCalculator)
