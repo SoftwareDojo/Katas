@@ -1,8 +1,10 @@
 # Description
 
-* return "fizz" for multiples of 3
-* return "buzz" for multiples of 5
-* return "fizzbuzz" for multiples of 3 and 5
+Write a program that prints the numbers from 1 to 100.
+But for multiples of three print "Fizz" instead of the
+number and for the multiples of five print "Buzz". For
+numbers which are multiples of both three and five
+print "FizzBuzz".
 
 # Sample
 ```
@@ -20,7 +22,7 @@ Input: 15 Output: fizzbuzz
 ```
 # Extentions
 
-* Also return "fizz", "buzz" or "fizzbuzz" if a number contains the digit 3, 5 or both.
+* Return "fizz", "buzz" or "fizzbuzz" if a number contains 3, 5 or both.
 ```
 Input: 13 Output: fizz
 Input: 51 Output: buzz
