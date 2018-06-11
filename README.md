@@ -2,7 +2,6 @@
 
 Coding Katas for C#, F# (.Net Core), Python and TypeScript! For more informations, click on the katas below.
 
-
 # Catalogue
 
 Easy:
@@ -22,6 +21,7 @@ Easy:
 * [Mine Field](/Descriptions/MineField.md)
 * [OCR](/Descriptions/BankOCR.md)
 * [BinarySearch](/Descriptions/BinarySearch.md)
+* [CombinedNumber](/Descriptions/CombinedNumber.md)
 
 Medium:
 --------------
