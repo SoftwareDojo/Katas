@@ -14,7 +14,7 @@ Easy:
 * [CalcStats](/Descriptions/CalcStats.md)
 * [Christmastree](/Descriptions/Christmastree.md)
 * [PrimeFactor](/Descriptions/PrimeFactor.md)
-* [ABC Problem](/Descriptions/ABCProblem.md)
+* [ABC Problem](/Descriptions/ABC.md)
 * [LuckyNumbers](/Descriptions/LuckyNumbers.md)
 * [ROT13](/Descriptions/ROT13.md)
 * [WordWrap](/Descriptions/WordWrap.md)
