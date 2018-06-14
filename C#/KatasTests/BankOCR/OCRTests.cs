@@ -7,8 +7,6 @@ namespace KatasTests.BankOCR
 {
     public class OCRTests
     {
-        private readonly Digits m_Digits = new Digits();
-
         [Theory]
         [InlineData("0")]
         [InlineData("1")]
@@ -23,7 +21,7 @@ namespace KatasTests.BankOCR
         public void Read_Digit(string expected)
         {
             // arrange
-            string text = GetOcrFromDigits(expected);
+            var text = GetOcrFromDigits(expected);
             // act
             var actual = new OCR().ReadText(text);
             // assert
@@ -38,7 +36,7 @@ namespace KatasTests.BankOCR
         public void Read_Line(string expected)
         {
             // arrange
-            string text = GetOcrFromDigits(expected);
+            var text = GetOcrFromDigits(expected);
             // act
             var actual = new OCR().ReadText(text);
             // assert
@@ -52,7 +50,7 @@ namespace KatasTests.BankOCR
         {
             //arrange
             var lines = expected.Split(new[] { ';' }, StringSplitOptions.None);
-            string text = lines.Aggregate(string.Empty, (current, line) => current + GetOcrFromDigits(line));
+            var text = lines.Aggregate(string.Empty, (current, line) => current + GetOcrFromDigits(line));
 
             // act
             var actual = new OCR().ReadText(text);
@@ -62,13 +60,14 @@ namespace KatasTests.BankOCR
 
         private string GetOcrFromDigits(string value)
         {
-            string result = string.Empty;
+            var digits = new Digits();
+            var result = string.Empty;
             var numbers = value.Select(c => int.Parse(c.ToString())).ToArray();
-            for (int i = 0; i < 3; i++)
+            for (var i = 0; i < 3; i++)
             {
                 foreach (var num in numbers)
                 {
-                    result += m_Digits[num].Lines[i];
+                    result += digits[num].Lines[i];
                 }
 
                 result += Environment.NewLine;

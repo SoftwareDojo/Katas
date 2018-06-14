@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
 namespace KatasTests.ABC
@@ -15,13 +14,13 @@ namespace KatasTests.ABC
         [InlineData("COMMON", false)]
         [InlineData("squad", true)]
         [InlineData("Confused", true)]
-        public void CheckWord(string value, bool expected)
+        public void WordIsPossible(string value, bool expected)
         {
             // arrange
             var abc = new Katas.ABC.ABCProblem();
 
             // act
-            bool actual = abc.CheckWord(value);
+            var actual = abc.IsPossible(value);
 
             // assert
             Assert.Equal(expected, actual);
@@ -33,7 +32,7 @@ namespace KatasTests.ABC
         [InlineData("baRk", true)]
         [InlineData("booK", false)]
         [InlineData("treat", false)]
-        public void CheckWord_with_custom_blocks(string value, bool expected)
+        public void WordIsPossible_with_custom_blocks(string value, bool expected)
         {
             // arrange
             var blocks = new List<string>
@@ -51,7 +50,7 @@ namespace KatasTests.ABC
             var abc = new Katas.ABC.ABCProblem(blocks);
 
             // act
-            bool actual = abc.CheckWord(value);
+            var actual = abc.IsPossible(value);
 
             // assert
             Assert.Equal(expected, actual);

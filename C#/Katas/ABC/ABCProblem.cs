@@ -26,18 +26,18 @@ namespace Katas.ABC
             m_Blocks = blocks;
         }
 
-        public bool CheckWord(string word)
+        public bool IsPossible(string word)
         {
-            var myBlocks = new List<string>(m_Blocks);
+            var blocks = new List<string>(m_Blocks);
 
-            foreach (char letter in word)
+            foreach (var letter in word)
             {
-                char lowerLetter = char.ToLower(letter);
+                var lowerLetter = char.ToLower(letter);
 
-                string block = myBlocks.FirstOrDefault(b => b.Contains(lowerLetter));
+                var block = blocks.FirstOrDefault(b => b.Contains(lowerLetter));
                 if (!string.IsNullOrEmpty(block))
                 {
-                    myBlocks.Remove(block);
+                    blocks.Remove(block);
                 }
                 else return false;
             }
