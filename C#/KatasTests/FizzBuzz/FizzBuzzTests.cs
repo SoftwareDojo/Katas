@@ -2,55 +2,91 @@
 
 namespace KatasTests.FizzBuzz
 {
-    public class FizzBuzzTests
+    public class A_number_is_fizz
     {
         [Theory]
-        [InlineData(0, "")]
-        [InlineData(1, "1")]
-        [InlineData(2, "2")]
-        [InlineData(3, "fizz")]
-        [InlineData(4, "4")]
-        [InlineData(5, "buzz")]
-        [InlineData(6, "fizz")]
-        [InlineData(10, "buzz")]
-        [InlineData(15, "fizzbuzz")]
-        public void SimpleFizzBuzz(int value, string expected)
+        [InlineData(3)]
+        [InlineData(6)]
+        public void If_it_is_divisible_by_3(uint number)
         {
-            // arrange
-            var target = new Katas.FizzBuzz.FizzBuzz();
-
-            // act
-            string actual = target.DoFizzBuzz((uint)value);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal("fizz", new Katas.FizzBuzz.FizzBuzz().ToFizzBuzz(number));
         }
 
         [Theory]
-        [InlineData(0, "")]
-        [InlineData(1, "1")]
-        [InlineData(2, "2")]
-        [InlineData(3, "fizz")]
-        [InlineData(4, "4")]
-        [InlineData(5, "buzz")]
-        [InlineData(6, "fizz")]
-        [InlineData(10, "buzz")]
-        [InlineData(13, "fizz")]
-        [InlineData(15, "fizzbuzz")]
-        [InlineData(25, "buzz")]
-        [InlineData(35, "fizzbuzz")]
-        [InlineData(52, "buzz")]
-        [InlineData(53, "fizzbuzz")]
-        public void ExtendedFizzBuzz(int value, string expected)
+        [InlineData(3)]
+        [InlineData(6)]
+        [InlineData(13)]
+        public void If_it_is_divisible_by_3_or_contains_3(uint number)
         {
-            // arrange
-            var target = new Katas.FizzBuzz.FizzBuzz();
+            Assert.Equal("fizz", new Katas.FizzBuzz.FizzBuzz().ToFizzBuzzExtended(number));
+        }
+    }
 
-            // act
-            string actual = target.DoFizzBuzzExtended((uint)value);
+    public class A_number_is_buzz
+    {
+        [Theory]
+        [InlineData(5)]
+        [InlineData(10)]
+        public void If_it_is_divisible_by_5(uint number)
+        {
+            Assert.Equal("buzz", new Katas.FizzBuzz.FizzBuzz().ToFizzBuzz(number));
+        }
 
-            // assert
-            Assert.Equal(expected, actual);
+        [Theory]
+        [InlineData(5)]
+        [InlineData(10)]
+        [InlineData(52)]
+        public void If_it_is_divisible_by_5_or_contains_5(uint number)
+        {
+            Assert.Equal("buzz", new Katas.FizzBuzz.FizzBuzz().ToFizzBuzzExtended(number));
+        }
+    }
+
+    public class A_number_is_fizzbuzz
+    {
+        [Theory]
+        [InlineData(15)]
+        public void If_it_is_divisible_by_3_and_5(uint number)
+        {
+            Assert.Equal("fizzbuzz", new Katas.FizzBuzz.FizzBuzz().ToFizzBuzz(number));
+        }
+
+        [Theory]
+        [InlineData(15)]
+        [InlineData(35)]
+        [InlineData(53)]
+        public void If_it_is_divisible_by_3_and_5_or_contains_3_and_5(uint number)
+        {
+            Assert.Equal("fizzbuzz", new Katas.FizzBuzz.FizzBuzz().ToFizzBuzzExtended(number));
+        }
+    }
+
+    public class A_number_is_a_number
+    {
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(4)]
+        [InlineData(8)]
+        [InlineData(31)]
+        [InlineData(52)]
+        public void If_it_is_not_divisible_by_3_or_5(uint number)
+        {
+            Assert.Equal(number.ToString(), new Katas.FizzBuzz.FizzBuzz().ToFizzBuzz(number));
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(4)]
+        [InlineData(8)]
+        [InlineData(41)]
+        [InlineData(79)]
+        public void If_it_is_not_divisible_by_3_or_5_and_does_not_contains_3_or_5(uint number)
+        {
+            Assert.Equal(number.ToString(), new Katas.FizzBuzz.FizzBuzz().ToFizzBuzzExtended(number));
         }
     }
 }

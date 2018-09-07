@@ -2,35 +2,37 @@
 {
     public class FizzBuzz
     {
-        public string DoFizzBuzz(uint value)
+        public string ToFizzBuzz(uint number)
         {
-            string result = string.Empty;
-            if (value == 0) return result;
+            var result = string.Empty;
+            var numberAsString = number.ToString();
+            if (number == 0) return numberAsString;
 
-            if (value % 3 == 0) result = "fizz";
-            if (value % 5 == 0) result = result + "buzz";
+            if (number % 3 == 0) result = "fizz";
+            if (number % 5 == 0) result = result + "buzz";
 
-            if (string.IsNullOrEmpty(result)) result = value.ToString();
+            if (string.IsNullOrEmpty(result)) return numberAsString;
 
             return result;
         }
 
-        public string DoFizzBuzzExtended(uint value)
+        public string ToFizzBuzzExtended(uint number)
         {
-            string result = string.Empty;
-            if (value == 0) return result;
-            string text = value.ToString();
+            var result = string.Empty;
+            var numberAsString = number.ToString();
+            if (number == 0) return numberAsString;
+            
 
-            if (value % 3 == 0 || text.Contains("3"))
+            if (number % 3 == 0 || numberAsString.Contains("3"))
             {
                 result = "fizz";
             }
-            if (value % 5 == 0 || text.Contains("5"))
+            if (number % 5 == 0 || numberAsString.Contains("5"))
             {
                 result = result + "buzz";
             }
 
-            if (string.IsNullOrEmpty(result)) return text;
+            if (string.IsNullOrEmpty(result)) return numberAsString;
 
             return result;
         }
