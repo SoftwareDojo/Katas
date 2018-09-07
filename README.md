@@ -22,7 +22,7 @@ Easy:
 * [OCR](/Descriptions/BankOCR.md)
 * [BinarySearch](/Descriptions/BinarySearch.md)
 * [CombinedNumber](/Descriptions/CombinedNumber.md)
-* [Palindrome] (/Descriptions/Palindrome.md)
+* [Palindrome](/Descriptions/Palindrome.md)
 
 Medium:
 --------------
