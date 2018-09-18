@@ -1,4 +1,6 @@
-﻿using Xunit;
+﻿using System;
+using Katas.LeapYear;
+using Xunit;
 
 namespace KatasTests.LeapYear
 {
@@ -11,7 +13,7 @@ namespace KatasTests.LeapYear
         [InlineData(4)]
         public void if_it_is_divisible_by_4_but_not_by_100(int year)
         {
-            Assert.True(new Katas.LeapYear.LeapYear().IsLeapYear(year));
+            Assert.True(Year.IsLeapYear(year));
         }
 
         [Theory]
@@ -19,9 +21,9 @@ namespace KatasTests.LeapYear
         [InlineData(3200)]
         [InlineData(2000)]
         [InlineData(1600)]
-        public void if_it_is_divisible_by_400(int year)
+        public void If_it_is_divisible_by_400(int year)
         {
-            Assert.True(new Katas.LeapYear.LeapYear().IsLeapYear(year));
+            Assert.True(Year.IsLeapYear(year));
         }
     }
 
@@ -32,9 +34,9 @@ namespace KatasTests.LeapYear
         [InlineData(2017)]
         [InlineData(1999)]
         [InlineData(1)]
-        public void If_it_is_not_divisible_by_4(int year)
+        public void if_it_is_not_divisible_by_4(int year)
         {
-            Assert.False(new Katas.LeapYear.LeapYear().IsLeapYear(year));
+            Assert.False(Year.IsLeapYear(year));
         }
 
         [Theory]
@@ -42,9 +44,20 @@ namespace KatasTests.LeapYear
         [InlineData(1900)]
         [InlineData(1800)]
         [InlineData(100)]
-        public void If_it_is_divisible_by_100_but_not_by_400(int year)
+        public void if_it_is_divisible_by_100_but_not_by_400(int year)
         {
-            Assert.False(new Katas.LeapYear.LeapYear().IsLeapYear(year));
+            Assert.False(Year.IsLeapYear(year));
+        }
+    }
+
+    public class A_Year_is_not_supported
+    {
+        [Theory]
+        [InlineData(-1)]
+        [InlineData(-2000)]
+        public void if_it_is_negative(int year)
+        {
+            Assert.Throws<ArgumentException>(() => Year.IsLeapYear(year));
         }
     }
 }
