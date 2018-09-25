@@ -7,32 +7,13 @@ namespace Katas.RomanNumbers
     public class RomanNumbers
     {
         private readonly IDictionary<string, int> m_RomanDigits;
-        private readonly IDictionary<int, string> m_ArabicDigits;
 
         public RomanNumbers()
         {
             m_RomanDigits = new Dictionary<string, int>
             {{"I", 1},{"V", 5},{"X", 10},{"L", 50},{"C", 100},{"D", 500},{"M", 1000}};
-            m_ArabicDigits = new Dictionary<int, string>
-            { { 1000, "M" }, { 900, "CM" }, { 500, "D" }, { 400, "CD" }, { 100, "C" }, { 90, "XC" }, { 50, "L" }, { 40, "XL" }, { 10, "X" }, { 9, "IX" }, { 5, "V" }, { 4, "IV" }, { 1, "I" } };
         }
 
-        public string FromArabicToRoman(int number)
-        {
-            string result = string.Empty;
-            if (number > 3999) return result;
-
-            foreach (var digit in m_ArabicDigits)
-            {
-                while (number >= digit.Key)
-                {
-                    result = result + digit.Value;
-                    number = number - digit.Key;
-                }
-            }
-
-            return result;
-        }
 
         public int FromRomanToDecimal(string romanNumber)
         {
@@ -42,26 +23,7 @@ namespace Katas.RomanNumbers
             IList<int> decimalNumbers = new List<int>();
             if (!TryConvertToDecimalDigits(romanNumber, decimalNumbers)) return 0;
 
-            for (int i = 0; i < decimalNumbers.Count; i++)
-            {
-                if (i + 1 >= decimalNumbers.Count) return decimalResult + decimalNumbers[i];
-
-                // substraction
-                if (decimalNumbers[i] < decimalNumbers[i + 1])
-                {
-                    decimalNumbers[i] = decimalNumbers[i + 1] - decimalNumbers[i];
-                    decimalResult = decimalResult + decimalNumbers[i];
-
-                    decimalNumbers.RemoveAt(i + 1);
-                }
-                // addition
-                else
-                {
-                    decimalResult = decimalResult + decimalNumbers[i];
-                }
-            }
-
-            return decimalResult;
+            return 0;
         }
 
         private bool TryConvertToDecimalDigits(string romanNumber, ICollection<int> numbers)
@@ -118,6 +80,88 @@ namespace Katas.RomanNumbers
             }
 
             return false;
+        }
+    }
+
+    public class Number
+    {
+        private static readonly Dictionary<string, string> romanDigits = new Dictionary<string, string>
+        {
+            {"IIIII", "V"}, 
+            {"IIII", "IV"}, 
+            {"VV", "X"},
+            {"VIV", "IX"},
+            {"XXXXX", "L"},
+            {"XXXX", "XL"},
+            {"LL" , "C"},
+            {"LXL", "XC"},
+            {"CCCCC", "D"},
+            {"CCCC", "CD"},
+            {"DD", "M"},
+            {"DCD", "CM"}
+        };
+
+        private static readonly Dictionary<string, int> romanArabicMapping = new Dictionary<string, int>
+        {
+            {"CM", 900},
+            {"M", 1000},
+            {"CD", 400},
+            {"D", 500},
+            {"XC", 90},
+            {"C", 100},
+            {"XL", 40},
+            {"L", 50},
+            {"IX", 9},
+            {"X", 10},
+            {"IV", 4},
+            {"V", 5},
+            {"I", 1},
+        };
+
+        public static string ToRoman(int number)
+        {
+            if (number < 1) throw new ArgumentException(nameof(number));
+            if (number > 3999) throw new ArgumentException(nameof(number));
+
+            var numberAsI = NumberToI(number);
+
+            foreach (var digit in romanDigits)
+            {
+                numberAsI = numberAsI.Replace(digit.Key, digit.Value);
+            }
+
+            return numberAsI;
+        }
+
+        public static int ToArabic(string roman)
+        {
+            roman = roman.ToUpper();
+            var number = 0;
+
+            foreach (var map in romanArabicMapping)
+            {
+                int position;
+                while ((position = roman.IndexOf(map.Key)) >= 0)
+                {
+                    roman = roman.Remove(position, map.Key.Length);
+                    number += map.Value;
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(roman)) throw new ArgumentException(nameof(roman));
+
+            return number;
+        }
+
+        private static string NumberToI(int number)
+        {
+            var result = string.Empty;
+            for (var i = 0; i < number; i++)
+            {
+                result += "I";
+            }
+
+            return result;
         }
     }
 }

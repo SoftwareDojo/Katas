@@ -21,7 +21,7 @@ namespace KatasTests.LeapYear
         [InlineData(3200)]
         [InlineData(2000)]
         [InlineData(1600)]
-        public void If_it_is_divisible_by_400(int year)
+        public void if_it_is_divisible_by_400(int year)
         {
             Assert.True(Year.IsLeapYear(year));
         }
