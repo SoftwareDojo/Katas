@@ -1,7 +1,6 @@
 # Katas (csharpcode.de)
 
-Coding Katas for C#, F# (.Net Core), Python and TypeScript! For more informations, click on the katas below.
-
+Coding Katas with samples for C#, F# (.Net Core), Python and TypeScript. 
 # Catalogue
 
 Easy:
@@ -23,6 +22,7 @@ Easy:
 * [BinarySearch](/Descriptions/BinarySearch.md)
 * [CombinedNumber](/Descriptions/CombinedNumber.md)
 * [Palindrome](/Descriptions/Palindrome.md)
+* [BalancedBrackets](/Descriptions/BalancedBrackets.md)
 
 Medium:
 --------------
