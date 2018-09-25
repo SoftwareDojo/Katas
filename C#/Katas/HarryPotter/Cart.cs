@@ -22,7 +22,7 @@ namespace Katas.HarryPotter
         public double GetTotalPrice()
         {
             double price = 0;
-            if (!m_Orders.Any()) return price;
+            if (m_Orders == null || !m_Orders.Any()) return price;
 
             foreach (var set in GetSetOrders(m_Orders))
             {

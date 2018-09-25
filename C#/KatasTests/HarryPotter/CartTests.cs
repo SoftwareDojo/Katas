@@ -55,7 +55,7 @@ namespace KatasFacts.HarryPotter
             cart.AddOrder(new Book("Harry5", 8), 1);
 
             var price = cart.GetTotalPrice();
-            Assert.Equal(51.2, price, 1);
+            Assert.Equal(51.6, price, 1);
         }
 
         [Fact]
