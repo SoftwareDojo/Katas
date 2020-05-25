@@ -1,10 +1,15 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Katas", "Katas\Katas.csproj", "{3AB9469B-B4AA-4CF4-A907-726176F7B6E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Katas", "Katas\Katas.csproj", "{3AB9469B-B4AA-4CF4-A907-726176F7B6E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatasTests", "KatasTests\KatasTests.csproj", "{2E04AF55-353D-4337-84B0-04D0D8EA35F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatasTests", "KatasTests\KatasTests.csproj", "{2E04AF55-353D-4337-84B0-04D0D8EA35F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0F6B32CD-78D7-44AB-A2CA-1E4BD548BCFC}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,5 +28,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C6B2DC49-A4DB-4EB4-A1B4-70510E31672C}
 	EndGlobalSection
 EndGlobal
