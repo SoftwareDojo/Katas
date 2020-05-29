@@ -1,30 +1,25 @@
-﻿using System;
-using Katas.Palindrome;
-using Xunit;
+﻿using Xunit;
 
 namespace KatasTests.Palindrome
 {
     public class PalindromeTests
     {
-        [Fact]
-        public void Empty()
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("   ")]
+        public void Empty_phrase_is_not_a_Palindrome(string phrase)
         {
-            // act
-            var result = new PalindromeChecker().IsPalindrome(String.Empty);
-            // assert
-            Assert.False(result);
+            Assert.False(Katas.Palindrome.Palindrome.IsValid(phrase));
         }
 
         [Theory]
         [InlineData("at")]
         [InlineData("Test")]
         [InlineData("No way")]
-        public void NonPalindrome(string value)
+        public void Phrase_is_not_a_Palindrome(string phrase)
         {
-            // act
-            var result = new PalindromeChecker().IsPalindrome(value);
-            // assert
-            Assert.False(result);
+            Assert.False(Katas.Palindrome.Palindrome.IsValid(phrase));
         }
 
         [Theory]
@@ -34,12 +29,9 @@ namespace KatasTests.Palindrome
         [InlineData("Anna")]
         [InlineData("Live evil")]
         [InlineData("a man a plan a canal panama")]
-        public void IsPalindrome(string value)
+        public void Phrase_is_a_Palindrome(string phrase)
         {
-            // act
-            var result = new PalindromeChecker().IsPalindrome(value);
-            // assert
-            Assert.True(result);
+            Assert.True(Katas.Palindrome.Palindrome.IsValid(phrase));
         }
     }
 }
