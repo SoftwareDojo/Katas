@@ -16,11 +16,8 @@ namespace KatasTests.ABC
         [InlineData("Confused", true)]
         public void WordIsPossible(string value, bool expected)
         {
-            // arrange
-            var abc = new Katas.ABC.ABCProblem();
-
             // act
-            var actual = abc.IsPossible(value);
+            var actual = new Katas.ABC.ABCProblem().IsPossible(value);
 
             // assert
             Assert.Equal(expected, actual);
@@ -47,10 +44,9 @@ namespace KatasTests.ABC
                 "v", "w", "x",
                 "y", "z"
             };
-            var abc = new Katas.ABC.ABCProblem(blocks);
 
             // act
-            var actual = abc.IsPossible(value);
+            var actual = new Katas.ABC.ABCProblem(blocks).IsPossible(value);
 
             // assert
             Assert.Equal(expected, actual);

@@ -28,21 +28,25 @@ namespace Katas.ABC
 
         public bool IsPossible(string word)
         {
-            var blocks = new List<string>(m_Blocks);
+            var copyBlocks = new List<string>(m_Blocks);
 
             foreach (var letter in word)
             {
-                var lowerLetter = char.ToLower(letter);
+                if (!IsLetterAvailable(copyBlocks, letter, out string block)) return false;
 
-                var block = blocks.FirstOrDefault(b => b.Contains(lowerLetter));
-                if (!string.IsNullOrEmpty(block))
-                {
-                    blocks.Remove(block);
-                }
-                else return false;
+                copyBlocks.Remove(block);
             }
 
             return true;
+        }
+
+        private bool IsLetterAvailable(List<string> blocks, char letter, out string block)
+        {
+            var lowerLetter = char.ToLower(letter);
+
+            block = blocks.FirstOrDefault(b => b.Contains(lowerLetter));
+
+            return string.IsNullOrEmpty(block);
         }
     }
 }

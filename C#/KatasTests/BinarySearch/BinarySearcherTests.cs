@@ -24,14 +24,14 @@ namespace KatasTests.BinarySearch
         public void NegativIndex()
         {
             //assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => new BinarySearcher().Search(new int[0], -1, 0, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new BinarySearcher().Search(Array.Empty<int>(), -1, 0, 0));
         }
 
         [Fact]
         public void NegativLength()
         {
             //assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => new BinarySearcher().Search(new int[0], 0, -1, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new BinarySearcher().Search(Array.Empty<int>(), 0, -1, 0));
         }
 
         [Fact]

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 
 using Katas.Args;
 using Xunit;
@@ -16,12 +15,13 @@ namespace KatasTests.Args
         private const string _cpuCount = "CpuCount";
         private const string _flagIdentifier = Arguments._flagIdentifier;
         private const string _valueIdentifier = Arguments._valueIdentifier;
+        private readonly bool[] _emptValues = System.Array.Empty<bool>();
 
         [Fact]
         public void If_arguments_are_null_return_default_flag_values()
         {
             // act
-            var arguments = new Arguments(new List<IFlag> { new Flag<bool>(_debug, false) });
+            var arguments = new Arguments(new IFlag[] { new Flag<bool>(_debug, false) });
             arguments.Read(null);
 
             // assert
@@ -32,7 +32,7 @@ namespace KatasTests.Args
         public void If_arguments_are_empty_return_default_flag_values()
         {
             // act
-            var arguments = new Arguments(new List<IFlag> { new Flag<bool>(_debug, false) });
+            var arguments = new Arguments(new IFlag[] { new Flag<bool>(_debug, false) });
             arguments.Read(System.Array.Empty<string>());
 
             // assert
@@ -44,7 +44,7 @@ namespace KatasTests.Args
         {
             // act
             string unknownFlag = "test";
-            var arguments = new Arguments(new List<IFlag> { new Flag<bool>(_debug, false) });
+            var arguments = new Arguments(new IFlag[] { new Flag<bool>(_debug, false) });
             arguments.Read(new[] { _flagIdentifier + unknownFlag });
 
             // assert
@@ -58,7 +58,7 @@ namespace KatasTests.Args
         {
             // act
             string unknownFlagIdentifier = "#";
-            var arguments = new Arguments(new List<IFlag> { new Flag<bool>(_debug, true) });
+            var arguments = new Arguments(new IFlag[] { new Flag<bool>(_debug, true) });
             arguments.Read(new[] { unknownFlagIdentifier + _debug });
 
             // assert
@@ -69,20 +69,20 @@ namespace KatasTests.Args
         public void Read_a_single_boolean_flag()
         {
             // act
-            var flagNames = new List<string> { _debug };
-            var arguments = CreateArgumentsAndRead(flagNames, new List<bool> { false }, new List<bool>());
+            var flagNames = new[] { _debug };
+            var arguments = CreateArgumentsAndRead(flagNames, new[] { false }, _emptValues);
 
             // assert
-            AssertArgumentValues(arguments, flagNames, new List<bool>());
+            AssertArgumentValues(arguments, flagNames, _emptValues);
         }
 
         [Fact]
         public void Read_a_single_boolean_flag_and_value()
         {
             // act
-            var flagNames = new List<string> { _debug };
-            var argValues = new List<bool> { true };
-            var arguments = CreateArgumentsAndRead(flagNames, new List<bool> { false }, argValues);
+            var flagNames = new[] { _debug };
+            var argValues = new[] { true };
+            var arguments = CreateArgumentsAndRead(flagNames, new[] { false }, argValues);
 
             // assert
             AssertArgumentValues(arguments, flagNames, argValues);
@@ -92,20 +92,20 @@ namespace KatasTests.Args
         public void Read_multiple_boolean_flags()
         {
             // act
-            var flagNames = new List<string> { _debug, _build };
-            var arguments = CreateArgumentsAndRead(flagNames, new List<bool> { false, false }, new List<bool>());
+            var flagNames = new[] { _debug, _build };
+            var arguments = CreateArgumentsAndRead(flagNames, new[] { false, false }, _emptValues);
 
             // assert
-            AssertArgumentValues(arguments, flagNames, new List<bool>());
+            AssertArgumentValues(arguments, flagNames, _emptValues);
         }
 
         [Fact]
         public void Read_multiple_boolean_flags_and_values()
         {
             // act
-            var flagNames = new List<string> { _debug, _build };
-            var argValues = new List<bool> { true, true };
-            var arguments = CreateArgumentsAndRead(flagNames, new List<bool> { false, false }, argValues);
+            var flagNames = new[] { _debug, _build };
+            var argValues = new[] { true, true };
+            var arguments = CreateArgumentsAndRead(flagNames, new[] { false, false }, argValues);
 
             // assert
             AssertArgumentValues(arguments, flagNames, argValues);
@@ -114,9 +114,9 @@ namespace KatasTests.Args
         [Fact]
         public void Read_a_single_string_flag_and_value()
         {
-            var flagNames = new List<string> { _target };
-            var argValues = new List<string> { "rebuild" };
-            var arguments = CreateArgumentsAndRead(flagNames, new List<string> { string.Empty }, argValues);
+            var flagNames = new[] { _target };
+            var argValues = new[] { "rebuild" };
+            var arguments = CreateArgumentsAndRead(flagNames, new[] { string.Empty }, argValues);
 
             // assert
             AssertArgumentValues(arguments, flagNames, argValues);
@@ -125,9 +125,9 @@ namespace KatasTests.Args
         [Fact]
         public void Read_multiple_string_flags_and_values()
         {
-            var flagNames = new List<string> { _target, _projectFile };
-            var argValues = new List<string> { "rebuild", "Katas.proj" };
-            var arguments = CreateArgumentsAndRead(flagNames, new List<string> { string.Empty, string.Empty }, argValues);
+            var flagNames = new[] { _target, _projectFile };
+            var argValues = new[] { "rebuild", "Katas.proj" };
+            var arguments = CreateArgumentsAndRead(flagNames, new[] { string.Empty, string.Empty }, argValues);
 
             // assert
             AssertArgumentValues(arguments, flagNames, argValues);
@@ -137,9 +137,9 @@ namespace KatasTests.Args
         public void Read_a_single_int_flag_and_value()
         {
             // act
-            var flagNames = new List<string> { _version };
-            var argValues = new List<int> { 999 };
-            var arguments = CreateArgumentsAndRead(flagNames, new List<int> { 0 }, argValues);
+            var flagNames = new[] { _version };
+            var argValues = new[] { 999 };
+            var arguments = CreateArgumentsAndRead(flagNames, new[] { 0 }, argValues);
 
             // assert
             AssertArgumentValues(arguments, flagNames, argValues);
@@ -149,26 +149,27 @@ namespace KatasTests.Args
         public void Read_multiple_int_flags_and_values()
         {
             // act
-            var flagNames = new List<string> { _version, _cpuCount };
-            var argValues = new List<int> { 999, 2 };
-            var arguments = CreateArgumentsAndRead(flagNames, new List<int> { 0, 1 }, argValues);
+            var flagNames = new[] { _version, _cpuCount };
+            var argValues = new[] { 999, 2 };
+            var arguments = CreateArgumentsAndRead(flagNames, new[] { 0, 1 }, argValues);
 
             // assert
             AssertArgumentValues(arguments, flagNames, argValues);
         }
 
-        private Arguments CreateArgumentsAndRead<T>(IList<string> flagNames, IList<T> flagDefaultValues, IList<T> argValues)
+        private Arguments CreateArgumentsAndRead<T>(string[] flagNames, T[] flagDefaultValues, T[] argValues)
         {
-            var flags = new List<Flag<T>>();
-            var args = new List<string>();
+            var argumentCount = flagNames.Length;
+            var flags = new Flag<T>[argumentCount];
+            var args = new string[argumentCount];
 
-            for (int i = 0; i < flagNames.Count; i++)
+            for (int i = 0; i < argumentCount; i++)
             {
-                flags.Add(new Flag<T>(flagNames[i], flagDefaultValues[i]));
+                flags[i] = new Flag<T>(flagNames[i], flagDefaultValues[i]);
 
                 var arg = _flagIdentifier + flagNames[i];
                 if (argValues.Any()) arg += _valueIdentifier + argValues[i];
-                args.Add(arg);
+                args[i] = arg;
             }
 
             var arguments = new Arguments(flags);
@@ -177,9 +178,9 @@ namespace KatasTests.Args
             return arguments;
         }
 
-        private void AssertArgumentValues<T>(Arguments arguments, IList<string> flagNames, IList<T> argValues)
+        private void AssertArgumentValues<T>(Arguments arguments, string[] flagNames, T[] argValues)
         {
-            for (int i = 0; i < flagNames.Count; i++)
+            for (int i = 0; i < flagNames.Length; i++)
             {
                 if (argValues.Any())
                 {
