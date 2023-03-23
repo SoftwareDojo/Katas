@@ -23,6 +23,7 @@ Easy:
 * [CombinedNumber](/Descriptions/CombinedNumber.md)
 * [Palindrome](/Descriptions/Palindrome.md)
 * [BalancedBrackets](/Descriptions/BalancedBrackets.md)
+* [Password](/Descriptions/Password.md)
 
 Medium:
 --------------
