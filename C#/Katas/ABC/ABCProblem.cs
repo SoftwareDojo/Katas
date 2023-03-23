@@ -46,7 +46,7 @@ namespace Katas.ABC
 
             block = blocks.FirstOrDefault(b => b.Contains(lowerLetter));
 
-            return string.IsNullOrEmpty(block);
+            return !string.IsNullOrEmpty(block);
         }
     }
 }

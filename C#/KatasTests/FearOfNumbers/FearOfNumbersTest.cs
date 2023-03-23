@@ -1,6 +1,7 @@
 ﻿using System;
-using Xunit;
+using System.Globalization;
 using Katas.FearOfNumbers;
+using Xunit;
 
 namespace KatasTests.FearOfNumbers
 {
@@ -119,8 +120,7 @@ namespace KatasTests.FearOfNumbers
         {
             // arrange
             var language = new GermanLanguage();
-            DateTime date;
-            DateTime.TryParse(dateString, out date);
+            DateTime.TryParse(dateString, CultureInfo.CreateSpecificCulture("de-De"), DateTimeStyles.None, out DateTime date);
             var fears = new Katas.FearOfNumbers.FearOfNumbers(date);
             fears.AddPatient(GetKarl());
 
