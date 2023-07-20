@@ -11,14 +11,7 @@ namespace KatasTests.ROT13
         [InlineData("xyz", "klm")]
         public void Encode(string text, string expected)
         {
-            // arrange
-            var rot13 = new Rot13();
-
-            // act
-            string actual = rot13.Encode(text);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, new Rot13().Encode(text));
         }
 
         [Theory]
@@ -27,14 +20,7 @@ namespace KatasTests.ROT13
         [InlineData("xyz", "yza")]
         public void Encode_offset_1(string text, string expected)
         {
-            // arrange
-            var rot13 = new Rot13(1);
-
-            // act
-            string actual = rot13.Encode(text);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, new Rot13(1).Encode(text));
         }
 
         [Theory]
@@ -42,14 +28,7 @@ namespace KatasTests.ROT13
         [InlineData("Köln", "Xbrya")]
         public void Encode_with_german_characters(string text, string expected)
         {
-            // arrange
-            var rot13 = new Rot13();
-
-            // act
-            string actual = rot13.Encode(text);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, new Rot13().Encode(text));
         }
 
         [Theory]
@@ -58,14 +37,7 @@ namespace KatasTests.ROT13
         [InlineData("klm", "xyz")]
         public void Decode(string text, string expected)
         {
-            // arrange
-            var rot13 = new Rot13();
-
-            // act
-            string actual = rot13.Decode(text);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, new Rot13().Decode(text));
         }
 
         [Theory]
@@ -74,14 +46,7 @@ namespace KatasTests.ROT13
         [InlineData("yza", "xyz")]
         public void Decode_offset_1(string text, string expected)
         {
-            // arrange
-            var rot13 = new Rot13(1);
-
-            // act
-            string actual = rot13.Decode(text);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, new Rot13(1).Decode(text));
         }
     }
 }

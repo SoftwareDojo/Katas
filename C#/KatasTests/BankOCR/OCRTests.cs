@@ -20,12 +20,7 @@ namespace KatasTests.BankOCR
         [InlineData("9")]
         public void Read_Digit(string expected)
         {
-            // arrange
-            var text = GetOcrFromDigits(expected);
-            // act
-            var actual = new OCR().ReadText(text);
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, new OCR().ReadText(GetOcrFromDigits(expected)));
         }
 
         [Theory]
@@ -35,12 +30,7 @@ namespace KatasTests.BankOCR
         [InlineData("0831579624")]
         public void Read_Line(string expected)
         {
-            // arrange
-            var text = GetOcrFromDigits(expected);
-            // act
-            var actual = new OCR().ReadText(text);
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, new OCR().ReadText(GetOcrFromDigits(expected)));
         }
 
         [Theory]
@@ -48,14 +38,10 @@ namespace KatasTests.BankOCR
         [InlineData("081;32;476;5059;1")]
         public void Read_Text(string expected)
         {
-            //arrange
             var lines = expected.Split(new[] { ';' }, StringSplitOptions.None);
             var text = lines.Aggregate(string.Empty, (current, line) => current + GetOcrFromDigits(line));
 
-            // act
-            var actual = new OCR().ReadText(text);
-            // assert
-            Assert.Equal(expected.Replace(";", Environment.NewLine), actual);
+            Assert.Equal(expected.Replace(";", Environment.NewLine), new OCR().ReadText(text));
         }
 
         private string GetOcrFromDigits(string value)

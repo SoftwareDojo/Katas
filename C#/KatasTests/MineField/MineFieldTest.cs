@@ -1,6 +1,7 @@
-﻿using Xunit;
+﻿using Katas;
+using Xunit;
 
-namespace KatasTests.MineField
+namespace KatasTests
 {
     public class MineFieldTest
     {
@@ -11,7 +12,7 @@ namespace KatasTests.MineField
         [InlineData("....", "0000")]
         public void No_Mines_Single_Line(string mines, string expected)
         {
-            AssertHint(mines, expected);
+            Assert.Equal(expected, MineField.CreateHint(mines));
         }
 
         [Theory]
@@ -19,7 +20,7 @@ namespace KatasTests.MineField
         [InlineData("....;....;....;....", "0000;0000;0000;0000")]
         public void No_Mines_Multiple_Lines(string mines, string expected)
         {
-            AssertHint(mines, expected);
+            Assert.Equal(expected, MineField.CreateHint(mines));
         }
 
         [Theory]
@@ -27,7 +28,7 @@ namespace KatasTests.MineField
         [InlineData("****", "****")]
         public void Mines_Single_Line(string mines, string expected)
         {
-            AssertHint(mines, expected);
+            Assert.Equal(expected, MineField.CreateHint(mines));
         }
 
         [Theory]
@@ -35,7 +36,7 @@ namespace KatasTests.MineField
         [InlineData("****;****;****;****", "****;****;****;****")]
         public void Mines_Multiple_Lines(string mines, string expected)
         {
-            AssertHint(mines, expected);
+            Assert.Equal(expected, MineField.CreateHint(mines));
         }
 
         [Theory]
@@ -50,7 +51,7 @@ namespace KatasTests.MineField
         [InlineData(".**.", "1**1")]
         public void One_Mine_In_Simple_Line(string mines, string expected)
         {
-            AssertHint(mines, expected);
+            Assert.Equal(expected, MineField.CreateHint(mines));
         }
 
         [Theory]
@@ -59,7 +60,7 @@ namespace KatasTests.MineField
         [InlineData(".**.*.", "1**2*1")]
         public void Multiple_Mines_In_Simple_Line(string mines, string expected)
         {
-            AssertHint(mines, expected);
+            Assert.Equal(expected, MineField.CreateHint(mines));
         }
 
         [Theory]
@@ -74,7 +75,7 @@ namespace KatasTests.MineField
         [InlineData("...;.*.;...", "111;1*1;111")]
         public void One_Mine_In_Multiple_Lines(string mines, string expected)
         {
-            AssertHint(mines, expected);
+            Assert.Equal(expected, MineField.CreateHint(mines));
         }
 
         [Theory]
@@ -82,15 +83,7 @@ namespace KatasTests.MineField
         [InlineData("*.*.;.*.*;*.*.;.*.*", "*3*2;3*4*;*4*3;2*3*")]
         public void Multiple_Mines_In_Multiple_Lines(string mines, string expected)
         {
-            AssertHint(mines, expected);
-        }
-
-        private void AssertHint(string mines, string expected)
-        {
-            var mineFiled = new Katas.MineField.MineField();
-            var actual = mineFiled.CreateHint(mines);
-
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, MineField.CreateHint(mines));
         }
     }
 }

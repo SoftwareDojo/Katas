@@ -1,60 +1,51 @@
 ﻿using System;
-using Katas.BinarySearch;
+using Katas;
 using Xunit;
 
-namespace KatasTests.BinarySearch
+namespace KatasTests
 {
     public class BinarySearcherTests
     {
         [Fact]
         public void NullInputSearch()
         {
-            //assert
-            Assert.Throws<ArgumentNullException>(() => new BinarySearcher().Search(null, 1));
+            Assert.Throws<ArgumentNullException>(() => BinarySearcher.Search(null, 1));
         }
 
         [Fact]
         public void NullInputIndexSearch()
         {
-            //assert
-            Assert.Throws<ArgumentNullException>(() => new BinarySearcher().Search(null, 0, 0, 1));
+            Assert.Throws<ArgumentNullException>(() => BinarySearcher.Search(null, 0, 0, 1));
         }
 
         [Fact]
         public void NegativIndex()
         {
-            //assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => new BinarySearcher().Search(Array.Empty<int>(), -1, 0, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => BinarySearcher.Search(Array.Empty<int>(), -1, 0, 0));
         }
 
         [Fact]
         public void NegativLength()
         {
-            //assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => new BinarySearcher().Search(Array.Empty<int>(), 0, -1, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => BinarySearcher.Search(Array.Empty<int>(), 0, -1, 0));
         }
 
         [Fact]
         public void ZeroLength()
         {
-            //assert
-            var actual = new BinarySearcher().Search(new int[1], 0, 0, 0);
-            //assert
-            Assert.Equal(0, actual);
+            Assert.Equal(0, BinarySearcher.Search(new int[1], 0, 0, 0));
         }
 
         [Fact]
         public void IndexOutOfRange()
         {
-            //assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => new BinarySearcher().Search(new int[0], 1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => BinarySearcher.Search(new int[0], 1));
         }
 
         [Fact]
         public void InvalidLength()
         {
-            //assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => new BinarySearcher().Search(new int[1], 0, 2, 1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => BinarySearcher.Search(new int[1], 0, 2, 1));
         }
 
         [Theory]
@@ -66,10 +57,7 @@ namespace KatasTests.BinarySearch
         [InlineData(0, int.MaxValue, int.MaxValue/2)]
         public void GetMedian(int low, int high, int expected)
         {
-            //act
-            var actual = new BinarySearcher().GetMedian(low, high);
-            //assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, BinarySearcher.GetMedian(low, high));
         }
 
         [Theory]
@@ -80,10 +68,7 @@ namespace KatasTests.BinarySearch
         [InlineData(new[] { 1, 5, 7, 13 }, 6, 0)]
         public void Search(int[] array, int value, int expected)
         {
-            //act
-            var actual = new BinarySearcher().Search(array, value);
-            //assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, BinarySearcher.Search(array, value));
         }
 
         [Theory]
@@ -92,10 +77,7 @@ namespace KatasTests.BinarySearch
         [InlineData(new[] { 0, 1, 2, 3, 4 }, 1, 1, 1, 1)]
         public void SearchIndex(int[] array, int index, int length, int value, int expected)
         {
-            //act
-            var actual = new BinarySearcher().Search(array, index, length, value);
-            //assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, BinarySearcher.Search(array, index, length, value));
         }
     }
 }

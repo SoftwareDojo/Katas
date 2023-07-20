@@ -4,42 +4,59 @@ using System.Linq;
 
 namespace Katas.RomanNumbers
 {
-    public class RomanNumbers
+    public static class Convert
     {
-        private readonly IDictionary<string, int> m_RomanDigits;
-        private readonly IDictionary<int, string> m_ArabicDigits;
+        private static readonly IDictionary<string, int> RomanDigits = new Dictionary<string, int>
+            {
+                { "I", 1 },
+                { "V", 5 },
+                { "X", 10 },
+                { "L", 50 },
+                { "C", 100 },
+                { "D", 500 },
+                { "M", 1000 },
+            };
 
-        public RomanNumbers()
-        {
-            m_RomanDigits = new Dictionary<string, int>
-            {{"I", 1},{"V", 5},{"X", 10},{"L", 50},{"C", 100},{"D", 500},{"M", 1000}};
-            m_ArabicDigits = new Dictionary<int, string>
-            { { 1000, "M" }, { 900, "CM" }, { 500, "D" }, { 400, "CD" }, { 100, "C" }, { 90, "XC" }, { 50, "L" }, { 40, "XL" }, { 10, "X" }, { 9, "IX" }, { 5, "V" }, { 4, "IV" }, { 1, "I" } };
-        }
+        private static readonly IDictionary<int, string> ArabicDigits = new Dictionary<int, string>
+            {
+                { 1000, "M" },
+                { 900, "CM" },
+                { 500, "D" },
+                { 400, "CD" },
+                { 100, "C" },
+                { 90, "XC" },
+                { 50, "L" },
+                { 40, "XL" },
+                { 10, "X" },
+                { 9, "IX" },
+                { 5, "V" },
+                { 4, "IV" },
+                { 1, "I" },
+            };
 
-        public string FromArabicToRoman(int number)
+        public static string FromArabicToRoman(int number)
         {
-            string result = string.Empty;
+            var result = string.Empty;
             if (number > 3999) return result;
 
-            foreach (var digit in m_ArabicDigits)
+            foreach (var digit in ArabicDigits)
             {
                 while (number >= digit.Key)
                 {
-                    result = result + digit.Value;
-                    number = number - digit.Key;
+                    result += digit.Value;
+                    number -= digit.Key;
                 }
             }
 
             return result;
         }
 
-        public int FromRomanToDecimal(string romanNumber)
+        public static int FromRomanToDecimal(string romanNumber)
         {
             if (string.IsNullOrEmpty(romanNumber)) throw new ArgumentNullException("romanNumber");
-            int decimalResult = 0;
+            var decimalResult = 0;
 
-            IList<int> decimalNumbers = new List<int>();
+            var decimalNumbers = new List<int>();
             if (!TryConvertToDecimalDigits(romanNumber, decimalNumbers)) return 0;
 
             for (int i = 0; i < decimalNumbers.Count; i++)
@@ -50,27 +67,27 @@ namespace Katas.RomanNumbers
                 if (decimalNumbers[i] < decimalNumbers[i + 1])
                 {
                     decimalNumbers[i] = decimalNumbers[i + 1] - decimalNumbers[i];
-                    decimalResult = decimalResult + decimalNumbers[i];
+                    decimalResult += decimalNumbers[i];
 
                     decimalNumbers.RemoveAt(i + 1);
                 }
                 // addition
                 else
                 {
-                    decimalResult = decimalResult + decimalNumbers[i];
+                    decimalResult += decimalNumbers[i];
                 }
             }
 
             return decimalResult;
         }
 
-        private bool TryConvertToDecimalDigits(string romanNumber, ICollection<int> numbers)
+        private static bool TryConvertToDecimalDigits(string romanNumber, ICollection<int> numbers)
         {
             foreach (char c in romanNumber)
             {
-                string number = c.ToString();
-                if (!m_RomanDigits.ContainsKey(number)) return false;
-                int decimalValue = m_RomanDigits[number];
+                var number = c.ToString();
+                if (!RomanDigits.ContainsKey(number)) return false;
+                var decimalValue = RomanDigits[number];
 
                 if (numbers.Count(n => n == decimalValue) > 3) return false;
                 if (!ValidateCombinations(decimalValue, numbers)) return false;
@@ -81,10 +98,10 @@ namespace Katas.RomanNumbers
             return !WrongOrder(numbers);
         }
 
-        private bool ValidateCombinations(int number, ICollection<int> decimalNumbers)
+        private static bool ValidateCombinations(int number, ICollection<int> decimalNumbers)
         {
             if (decimalNumbers.Count == 0) return true;
-            int last = decimalNumbers.Last();
+            var last = decimalNumbers.Last();
 
             if ((number == 5 || number == 50 || number == 500) && last == number) return false;
             if (last >= number) return true;
@@ -98,14 +115,14 @@ namespace Katas.RomanNumbers
             return false;
         }
 
-        private bool WrongOrder(ICollection<int> decimalNumbers)
+        private static bool WrongOrder(ICollection<int> decimalNumbers)
         {
             if (decimalNumbers.Count == 0) return true;
 
-            int prevNumber = 0;
-            int prePrevNumber = 0;
+            var prevNumber = 0;
+            var prePrevNumber = 0;
 
-            foreach (int number in decimalNumbers)
+            foreach (var number in decimalNumbers)
             {
                 if (prevNumber != 0 && prePrevNumber != 0)
                 {

@@ -6,9 +6,10 @@ namespace Katas.Args
 {
     public class Arguments
     {
-        internal const string _flagIdentifier = "-";
-        internal const string _valueIdentifier = ":";
+        public const string FlagIdentifier = "-";
+        public const string ValueIdentifier = ":";
         private readonly Dictionary<string, string> _flagValues = new Dictionary<string, string>();
+
         public IDictionary<string, IFlag> Flags { get; }
 
         public Arguments(IEnumerable<IFlag> flags)
@@ -38,7 +39,7 @@ namespace Katas.Args
         {
             foreach (var arg in args)
             {
-                if (!arg.StartsWith(_flagIdentifier)) continue;
+                if (!arg.StartsWith(FlagIdentifier)) continue;
 
                 var hasValue = HasValue(arg, out var valuePos);
                 if (!HasFlag(arg, valuePos, out var flag)) continue;
@@ -55,7 +56,7 @@ namespace Katas.Args
 
         private bool HasValue(string arg, out int valuePos)
         {
-            valuePos = arg.IndexOf(_valueIdentifier, StringComparison.CurrentCulture);
+            valuePos = arg.IndexOf(ValueIdentifier, StringComparison.CurrentCulture);
             if (valuePos >= 0) return true;
 
             valuePos = arg.Length;

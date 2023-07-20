@@ -1,20 +1,18 @@
-﻿
-namespace Katas.StringCalculator
+﻿namespace Katas
 {
-    public class StringCalculator
+    public static class StringCalculator
     {
-        public int Add(string numbers, char seperator)
+        public static int Add(string numbers, char seperator)
         {
-            int result = 0;
+            var result = 0;
             if (string.IsNullOrEmpty(numbers)) return result;
 
-            foreach (string part in numbers.Split(seperator))
+            foreach (var part in numbers.Split(seperator))
             {
-                if (string.IsNullOrEmpty(part) || string.IsNullOrWhiteSpace(part)) continue;
+                if (string.IsNullOrWhiteSpace(part)) continue;
 
-                int number;
-                if (!int.TryParse(part, out number)) continue;
-                result = result + number;
+                if (!int.TryParse(part, out var number)) continue;
+                result += number;
             }
 
             return result;

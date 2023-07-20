@@ -1,11 +1,11 @@
-﻿namespace Katas.FizzBuzz
+﻿namespace Katas
 {
     public class FizzBuzz
     {
         private const string Buzz = "buzz";
         private const string Fizz = "fizz";
 
-        public string ToFizzBuzz(uint number)
+        public static string ToFizzBuzz(uint number)
         {
             var result = number.ToString();
             if (number == 0) return result;
@@ -17,7 +17,7 @@
             return result;
         }
 
-        public string ToFizzBuzzExtended(uint number)
+        public static string ToFizzBuzzExtended(uint number)
         {
             var result = string.Empty;
             var numberAsString = number.ToString();
@@ -31,12 +31,12 @@
             return result;
         }
 
-        private bool IsDivisibleBy3(uint number)
+        private static bool IsDivisibleBy3(uint number)
         {
             return number % 3 == 0;
         }
 
-        private bool IsDivisibleBy5(uint number)
+        private static bool IsDivisibleBy5(uint number)
         {
             return number % 5 == 0;
         }

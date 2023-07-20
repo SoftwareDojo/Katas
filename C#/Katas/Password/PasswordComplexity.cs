@@ -6,6 +6,7 @@
         private bool lowerLetter;
         private bool digit;
         private bool specialChar;
+
         public void CheckChar(char c)
         {
             if (char.IsUpper(c)) upperLetter = true;

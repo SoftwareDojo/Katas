@@ -5,9 +5,9 @@ namespace Katas.Yatzy
 {
     public class YatzyScorer
     {
-        private const int s_MinValue = 1;
-        private const int s_MaxValue = 6;
-        private const int s_DiceCount = 5;
+        private const int MinValue = 1;
+        private const int MaxValue = 6;
+        private const int YatzyDiceCount = 5;
 
         public int Chance(int[] dice)
         {
@@ -54,7 +54,7 @@ namespace Katas.Yatzy
         public int Yatzy(int[] dice)
         {
             CheckDice(dice);
-            return MaxDiceCount(dice, s_DiceCount) > 0 ? 50 : 0;
+            return MaxDiceCount(dice, YatzyDiceCount) > 0 ? 50 : 0;
         }
 
         public int OnePair(int[] dice)
@@ -68,7 +68,7 @@ namespace Katas.Yatzy
             CheckDice(dice);
 
             var sum = 0;
-            for (int i = s_MaxValue; i >= s_MinValue; i--)
+            for (int i = MaxValue; i >= MinValue; i--)
             {
                 if (DiceCount(dice, i) < 2) continue;
                 if (sum == 0) sum = 2 * i;
@@ -94,7 +94,7 @@ namespace Katas.Yatzy
         {
             CheckDice(dice);
 
-            for (int i = s_MinValue; i < s_MaxValue; i++)
+            for (int i = MinValue; i < MaxValue; i++)
             {
                 if (DiceCount(dice, i) != 1) return 0;
             }
@@ -106,7 +106,7 @@ namespace Katas.Yatzy
         {
             CheckDice(dice);
 
-            for (int i = s_MaxValue; i > s_MinValue; i--)
+            for (int i = MaxValue; i > MinValue; i--)
             {
                 if (DiceCount(dice, i) != 1) return 0;
             }
@@ -121,7 +121,7 @@ namespace Katas.Yatzy
             var threeOfAKind = MaxDiceCount(dice, 3);
             if (threeOfAKind == 0) return 0;
 
-            for (int i = s_MaxValue; i >= s_MinValue; i--)
+            for (int i = MaxValue; i >= MinValue; i--)
             {
                 if (i == threeOfAKind) continue;
                 if (DiceCount(dice, i) == 2) return (2 * i) + (3 * threeOfAKind);
@@ -132,7 +132,7 @@ namespace Katas.Yatzy
 
         private int MaxDiceCount(int[] dice, int minCount)
         {
-            for (int i = s_MaxValue; i >= s_MinValue; i--)
+            for (int i = MaxValue; i >= MinValue; i--)
             {
                 if (DiceCount(dice, i) >= minCount) return i;
             }
@@ -148,11 +148,11 @@ namespace Katas.Yatzy
         private void CheckDice(int[] dice)
         {
             if (dice == null) throw new ArgumentNullException(nameof(dice));
-            if (dice.Length != s_DiceCount) throw new ArgumentException(nameof(dice));
+            if (dice.Length != YatzyDiceCount) throw new ArgumentException(nameof(dice));
 
             foreach (var value in dice)
             {
-                if (value < s_MinValue || value > s_MaxValue) throw new ArgumentException(nameof(dice));
+                if (value < MinValue || value > MaxValue) throw new ArgumentException(nameof(dice));
             }
         }
     }

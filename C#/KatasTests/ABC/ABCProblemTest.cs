@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using Katas;
 using Xunit;
 
-namespace KatasTests.ABC
+namespace KatasTests
 {
     public class ABCProblemTest
     {
@@ -16,11 +17,7 @@ namespace KatasTests.ABC
         [InlineData("Confused", true)]
         public void WordIsPossible(string value, bool expected)
         {
-            // act
-            var actual = new Katas.ABC.ABCProblem().IsPossible(value);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, new ABCProblem().IsPossible(value));
         }
 
         [Theory]
@@ -31,7 +28,6 @@ namespace KatasTests.ABC
         [InlineData("treat", false)]
         public void WordIsPossible_with_custom_blocks(string value, bool expected)
         {
-            // arrange
             var blocks = new List<string>
             {
                 "a", "b", "c",
@@ -42,14 +38,10 @@ namespace KatasTests.ABC
                 "p", "q", "r",
                 "s", "t", "u",
                 "v", "w", "x",
-                "y", "z"
+                "y", "z",
             };
 
-            // act
-            var actual = new Katas.ABC.ABCProblem(blocks).IsPossible(value);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, new ABCProblem(blocks).IsPossible(value));
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 
-namespace Katas.CombinedNumber
+namespace Katas
 {
     public class CombinedNumber
     {
-        public string Combine(int[] numbers)
+        public static string Combine(int[] numbers)
         {
             if (numbers == null || numbers.Length == 0) return "";
 
@@ -13,7 +13,7 @@ namespace Katas.CombinedNumber
             return numbers.Aggregate("", (result, n) => result + n);
         }
 
-        internal int CompareNumbersByLengthAndValue(int x, int y)
+        public static int CompareNumbersByLengthAndValue(int x, int y)
         {
             var xDigits = SplitNumber(x.ToString());
             var xDigitsLength = xDigits.Length;
@@ -38,7 +38,7 @@ namespace Katas.CombinedNumber
             return 1;
         }
 
-        internal int[] SplitNumber(string number)
+        public static int[] SplitNumber(string number)
         {
             return number.Select(d => int.Parse(d.ToString())).ToArray();
         }

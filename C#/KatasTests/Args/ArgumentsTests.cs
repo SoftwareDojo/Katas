@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-
 using Katas.Args;
 using Xunit;
 
@@ -13,8 +12,6 @@ namespace KatasTests.Args
         private const string _projectFile = "ProjectFile";
         private const string _version = "version";
         private const string _cpuCount = "CpuCount";
-        private const string _flagIdentifier = Arguments._flagIdentifier;
-        private const string _valueIdentifier = Arguments._valueIdentifier;
         private readonly bool[] _emptValues = System.Array.Empty<bool>();
 
         [Fact]
@@ -45,7 +42,7 @@ namespace KatasTests.Args
             // act
             string unknownFlag = "test";
             var arguments = new Arguments(new IFlag[] { new Flag<bool>(_debug, false) });
-            arguments.Read(new[] { _flagIdentifier + unknownFlag });
+            arguments.Read(new[] { Arguments.FlagIdentifier + unknownFlag });
 
             // assert
             Assert.False(arguments.GetValue<bool>(unknownFlag));
@@ -167,8 +164,8 @@ namespace KatasTests.Args
             {
                 flags[i] = new Flag<T>(flagNames[i], flagDefaultValues[i]);
 
-                var arg = _flagIdentifier + flagNames[i];
-                if (argValues.Any()) arg += _valueIdentifier + argValues[i];
+                var arg = Arguments.FlagIdentifier + flagNames[i];
+                if (argValues.Any()) arg += Arguments.ValueIdentifier + argValues[i];
                 args[i] = arg;
             }
 

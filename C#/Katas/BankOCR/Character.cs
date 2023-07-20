@@ -1,5 +1,4 @@
-﻿
-namespace Katas.BankOCR
+﻿namespace Katas.BankOCR
 {
     public class Character
     {

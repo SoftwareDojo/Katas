@@ -7,7 +7,7 @@ namespace KatasTests.PrimeFactor
     {
         [Theory]
         [InlineData(1, new int[0])]
-        [InlineData(2, new [] {2})]
+        [InlineData(2, new[] { 2 })]
         [InlineData(3, new[] { 3 })]
         [InlineData(4, new[] { 2, 2 })]
         [InlineData(5, new[] { 5 })]

@@ -1,14 +1,14 @@
 ﻿using System.Linq;
 
-namespace Katas.MineField
+namespace Katas
 {
     public class MineField
     {
-        private const char s_NewLine = ';';
-        private const char s_Mine = '*';
-        private const int s_MineValue = -1;
+        private const char NewLine = ';';
+        private const char Mine = '*';
+        private const int MineValue = -1;
 
-        public string CreateHint(string mines)
+        public static string CreateHint(string mines)
         {
             if (string.IsNullOrEmpty(mines)) return string.Empty;
             var hint = CreateHintField(mines);
@@ -36,12 +36,12 @@ namespace Katas.MineField
             return ShowHintField(hint);
         }
 
-        private bool IsMineField(int field)
+        private static bool IsMineField(int field)
         {
-            return field == s_MineValue;
+            return field == MineValue;
         }
 
-        private void UpdateField(int x, int y, int[][] hint)
+        private static void UpdateField(int x, int y, int[][] hint)
         {
             if (x >= hint.Length || x < 0) return;
             if (y >= hint[x].Length || y < 0) return;
@@ -50,9 +50,9 @@ namespace Katas.MineField
             hint[x][y] += 1;
         }
 
-        private int[][] CreateHintField(string mines)
+        private static int[][] CreateHintField(string mines)
         {
-            var mineLines = mines.Split(s_NewLine);
+            var mineLines = mines.Split(NewLine);
             int[][] result = new int[mineLines.Length][];
 
             for (int x = 0; x < mineLines.Length; x++)
@@ -61,7 +61,7 @@ namespace Katas.MineField
 
                 for (int y = 0; y < mineLines[x].Length; y++)
                 {
-                    if (mineLines[x][y] == s_Mine) result[x][y] = s_MineValue;
+                    if (mineLines[x][y] == Mine) result[x][y] = MineValue;
                     else result[x][y] = 0;
                 }
             }
@@ -69,9 +69,9 @@ namespace Katas.MineField
             return result;
         }
 
-        private string ShowHintField(int[][] hint)
+        private static string ShowHintField(int[][] hint)
         {
-            string result = hint.Aggregate(string.Empty, (s, f) => s + (string.Join("", f).Replace(s_MineValue.ToString(), s_Mine.ToString()) + s_NewLine));
+            string result = hint.Aggregate(string.Empty, (s, f) => s + (string.Join("", f).Replace(MineValue.ToString(), Mine.ToString()) + NewLine));
             return result.Substring(0, result.Length - 1);
         }
     }

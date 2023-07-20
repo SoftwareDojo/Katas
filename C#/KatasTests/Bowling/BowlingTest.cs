@@ -1,5 +1,5 @@
-﻿using Xunit;
-using Katas.Bowling;
+﻿using Katas.Bowling;
+using Xunit;
 
 namespace KatasTests.Bowling
 {
@@ -40,7 +40,7 @@ namespace KatasTests.Bowling
         public void RollWithMiss(int pins, int expected)
         {
             // arrange
-            var bowling = new Katas.Bowling.Game();
+            var bowling = new Game();
 
             // act
             for (int i = 0; i < 10; i++)
@@ -66,7 +66,7 @@ namespace KatasTests.Bowling
         public void RollWithSpare(int pins, int expected)
         {
             // arrange
-            var bowling = new Katas.Bowling.Game();
+            var bowling = new Game();
 
             // act
             for (int i = 0; i < 10; i++)
@@ -95,7 +95,7 @@ namespace KatasTests.Bowling
         public void MissWithRoll(int pins, int expected)
         {
             // arrange
-            var bowling = new Katas.Bowling.Game();
+            var bowling = new Game();
 
             // act
             for (int i = 0; i < 10; i++)
@@ -118,7 +118,7 @@ namespace KatasTests.Bowling
         public void Spare(int pins1, int pins2)
         {
             // arrange
-            var bowling = new Katas.Bowling.Game();
+            var bowling = new Game();
 
             // act
             bowling.Throw(pins1);
@@ -133,7 +133,7 @@ namespace KatasTests.Bowling
         public void Strike()
         {
             // arrange
-            var bowling = new Katas.Bowling.Game();
+            var bowling = new Game();
 
             // act
             bowling.Throw(10);
@@ -148,7 +148,7 @@ namespace KatasTests.Bowling
         public void PerfectGame()
         {
             // arrange
-            var bowling = new Katas.Bowling.Game();
+            var bowling = new Game();
 
             // act
             for (int i = 0; i < 12; i++)
@@ -164,7 +164,7 @@ namespace KatasTests.Bowling
         public void Scoring_Spare()
         {
             // arrange
-            var bowling = new Katas.Bowling.Game();
+            var bowling = new Game();
             bowling.Throw(9);
             bowling.Throw(1);
 
@@ -181,7 +181,7 @@ namespace KatasTests.Bowling
         public void Scoring_Strike()
         {
             // arrange
-            var bowling = new Katas.Bowling.Game();
+            var bowling = new Game();
             bowling.Throw(10);
 
             // act
@@ -197,7 +197,7 @@ namespace KatasTests.Bowling
         public void ScoreBoard_PerfectGame()
         {
             // arrange
-            var bowling = new Katas.Bowling.Game();
+            var bowling = new Game();
 
             for (int i = 0; i < 12; i++)
             {
@@ -212,7 +212,7 @@ namespace KatasTests.Bowling
         public void Sample_Game()
         {
             // arrange
-            var bowling = new Katas.Bowling.Game();
+            var bowling = new Game();
 
             // act
             bowling.Throw(1);

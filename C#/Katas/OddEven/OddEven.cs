@@ -1,23 +1,23 @@
 ﻿using System;
 
-namespace Katas.OddEven
+namespace Katas
 {
-    public class OddEven
+    public static class OddEven
     {
-        private const string s_Even = "Even";
-        private const string s_Odd = "Odd";
+        private const string Even = "Even";
+        private const string Odd = "Odd";
 
-        public string Convert(int number)
+        public static string Convert(int number)
         {
-            if (number % 2 == 0) return s_Even;
+            if (number % 2 == 0) return Even;
             if (IsPrimeNumber(number)) return number.ToString();
 
-            return s_Odd;
+            return Odd;
         }
 
-        public string ConvertRange(int start, int end)
+        public static string ConvertRange(int start, int end)
         {
-            string result = string.Empty;
+            var result = string.Empty;
 
             for (int i = start; i <= end; i++)
             {
@@ -27,7 +27,7 @@ namespace Katas.OddEven
             return result.Trim();
         }
 
-        public string ConvertWithString(int number)
+        public static string ConvertWithString(int number)
         {
             string numberTxt = number.ToString();
 
@@ -36,14 +36,14 @@ namespace Katas.OddEven
                 numberTxt.EndsWith("4") ||
                 numberTxt.EndsWith("6") ||
                 numberTxt.EndsWith("8"))
-                return s_Even;
+                return Even;
 
             if (IsPrimeNumber(number)) return numberTxt;
 
-            return s_Odd;
+            return Odd;
         }
 
-        private bool IsPrimeNumber(int number)
+        private static bool IsPrimeNumber(int number)
         {
             if (number == 1) return false;
 

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Katas.GoldbachsConjecture
+namespace Katas
 {
     public class GoldbachsConjecture
     {
-        public IEnumerable<int[]> TwoPrimeCalculation(int number)
+        public static IEnumerable<int[]> TwoPrimeCalculation(int number)
         {
             if (number < 3 || number % 2 != 0) return null;
             IList<int[]> results = new List<int[]>();
@@ -23,7 +23,7 @@ namespace Katas.GoldbachsConjecture
             return results;
         }
 
-        public IEnumerable<int[]> ThreePrimeCalculation(int number)
+        public static IEnumerable<int[]> ThreePrimeCalculation(int number)
         {
             if (number < 6 || number % 2 == 0) return null;
             IList<int[]> results = new List<int[]>();
@@ -59,7 +59,7 @@ namespace Katas.GoldbachsConjecture
             return results;
         }
 
-        private bool IsPrimeNumber(int number)
+        private static bool IsPrimeNumber(int number)
         {
             if (number == 1) return false;
             for (int i = 2; i <= Math.Sqrt(number); i++)

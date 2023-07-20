@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Katas;
 using Xunit;
 
-namespace KatasTests.GoldbachsConjecture
+namespace KatasTests
 {
     public class GoldbachsConjectureTests
     {
@@ -13,14 +14,7 @@ namespace KatasTests.GoldbachsConjecture
         [InlineData(12, "5,7")]
         public void TwoPrimeCalculationSimple(int value, string expected)
         {
-            // arrange
-            var gc = new Katas.GoldbachsConjecture.GoldbachsConjecture();
-
-            // act
-            string actual = PrintResult(gc.TwoPrimeCalculation(value));
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, PrintResult(GoldbachsConjecture.TwoPrimeCalculation(value)));
         }
 
         [Theory]
@@ -32,14 +26,7 @@ namespace KatasTests.GoldbachsConjecture
         [InlineData(48, "5,43 | 7,41 | 11,37 | 17,31 | 19,29")]
         public void TwoPrimeCalculationMultiple(int value, string expected)
         {
-            // arrange
-            var gc = new Katas.GoldbachsConjecture.GoldbachsConjecture();
-
-            // act
-            string actual = PrintResult(gc.TwoPrimeCalculation(value));
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, PrintResult(GoldbachsConjecture.TwoPrimeCalculation(value)));
         }
 
         [Theory]
@@ -52,28 +39,14 @@ namespace KatasTests.GoldbachsConjecture
         [InlineData(9, "")]
         public void ErrorHandling(int value, string expected)
         {
-            // arrange
-            var gc = new Katas.GoldbachsConjecture.GoldbachsConjecture();
-
-            // act
-            string actual = PrintResult(gc.TwoPrimeCalculation(value));
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, PrintResult(GoldbachsConjecture.TwoPrimeCalculation(value)));
         }
 
         [Theory]
         [InlineData(7, "2,2,3")]
         public void ThreePrimeCalculationSimple(int value, string expected)
         {
-            // arrange
-            var gc = new Katas.GoldbachsConjecture.GoldbachsConjecture();
-
-            // act
-            string actual = PrintResult(gc.ThreePrimeCalculation(value));
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, PrintResult(GoldbachsConjecture.ThreePrimeCalculation(value)));
         }
 
         [Theory]
@@ -84,22 +57,15 @@ namespace KatasTests.GoldbachsConjecture
         [InlineData(17, "2,2,13 | 3,3,11 | 3,7,7 | 5,5,7")]
         public void ThreePrimeCalculationMultiple(int value, string expected)
         {
-            // arrange
-            var gc = new Katas.GoldbachsConjecture.GoldbachsConjecture();
-
-            // act
-            string actual = PrintResult(gc.ThreePrimeCalculation(value));
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, PrintResult(GoldbachsConjecture.ThreePrimeCalculation(value)));
         }
 
-        public string PrintResult(IEnumerable<int[]> results)
+        private string PrintResult(IEnumerable<int[]> results)
         {
-            string print = string.Empty;
+            var print = string.Empty;
             if (results == null || !results.Any()) return print;
 
-            foreach (int[] result in results)
+            foreach (var result in results)
             {
                 foreach (int num in result)
                 {

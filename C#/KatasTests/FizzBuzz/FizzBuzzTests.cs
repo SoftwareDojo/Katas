@@ -1,6 +1,7 @@
-﻿using Xunit;
+﻿using Katas;
+using Xunit;
 
-namespace KatasTests.FizzBuzz
+namespace KatasTests
 {
     public class A_number_is_fizz
     {
@@ -9,7 +10,7 @@ namespace KatasTests.FizzBuzz
         [InlineData(6)]
         public void If_it_is_divisible_by_3(uint number)
         {
-            Assert.Equal("fizz", new Katas.FizzBuzz.FizzBuzz().ToFizzBuzz(number));
+            Assert.Equal("fizz", FizzBuzz.ToFizzBuzz(number));
         }
 
         [Theory]
@@ -18,7 +19,7 @@ namespace KatasTests.FizzBuzz
         [InlineData(13)]
         public void If_it_is_divisible_by_3_or_contains_3(uint number)
         {
-            Assert.Equal("fizz", new Katas.FizzBuzz.FizzBuzz().ToFizzBuzzExtended(number));
+            Assert.Equal("fizz", FizzBuzz.ToFizzBuzzExtended(number));
         }
     }
 
@@ -29,7 +30,7 @@ namespace KatasTests.FizzBuzz
         [InlineData(10)]
         public void If_it_is_divisible_by_5(uint number)
         {
-            Assert.Equal("buzz", new Katas.FizzBuzz.FizzBuzz().ToFizzBuzz(number));
+            Assert.Equal("buzz", FizzBuzz.ToFizzBuzz(number));
         }
 
         [Theory]
@@ -38,7 +39,7 @@ namespace KatasTests.FizzBuzz
         [InlineData(52)]
         public void If_it_is_divisible_by_5_or_contains_5(uint number)
         {
-            Assert.Equal("buzz", new Katas.FizzBuzz.FizzBuzz().ToFizzBuzzExtended(number));
+            Assert.Equal("buzz", FizzBuzz.ToFizzBuzzExtended(number));
         }
     }
 
@@ -48,7 +49,7 @@ namespace KatasTests.FizzBuzz
         [InlineData(15)]
         public void If_it_is_divisible_by_3_and_5(uint number)
         {
-            Assert.Equal("fizzbuzz", new Katas.FizzBuzz.FizzBuzz().ToFizzBuzz(number));
+            Assert.Equal("fizzbuzz", FizzBuzz.ToFizzBuzz(number));
         }
 
         [Theory]
@@ -57,7 +58,7 @@ namespace KatasTests.FizzBuzz
         [InlineData(53)]
         public void If_it_is_divisible_by_3_and_5_or_contains_3_and_5(uint number)
         {
-            Assert.Equal("fizzbuzz", new Katas.FizzBuzz.FizzBuzz().ToFizzBuzzExtended(number));
+            Assert.Equal("fizzbuzz", FizzBuzz.ToFizzBuzzExtended(number));
         }
     }
 
@@ -73,7 +74,7 @@ namespace KatasTests.FizzBuzz
         [InlineData(52)]
         public void If_it_is_not_divisible_by_3_or_5(uint number)
         {
-            Assert.Equal(number.ToString(), new Katas.FizzBuzz.FizzBuzz().ToFizzBuzz(number));
+            Assert.Equal(number.ToString(), FizzBuzz.ToFizzBuzz(number));
         }
 
         [Theory]
@@ -86,7 +87,7 @@ namespace KatasTests.FizzBuzz
         [InlineData(79)]
         public void If_it_is_not_divisible_by_3_or_5_and_does_not_contains_3_or_5(uint number)
         {
-            Assert.Equal(number.ToString(), new Katas.FizzBuzz.FizzBuzz().ToFizzBuzzExtended(number));
+            Assert.Equal(number.ToString(), FizzBuzz.ToFizzBuzzExtended(number));
         }
     }
 }

@@ -19,12 +19,12 @@ namespace Katas.TicTacToe
                 {
                     ui.EmptyCell, ui.EmptyCell, ui.EmptyCell,
                     ui.EmptyCell, ui.EmptyCell, ui.EmptyCell,
-                    ui.EmptyCell, ui.EmptyCell, ui.EmptyCell
+                    ui.EmptyCell, ui.EmptyCell, ui.EmptyCell,
                 },
                 new[]
                 {
                     new Player("Player 1", 'X'),
-                    new Player("Player 2", 'O')
+                    new Player("Player 2", 'O'),
                 });
         }
 
@@ -65,9 +65,8 @@ namespace Katas.TicTacToe
 
         private bool Turn()
         {
-            int index;
-            bool isIntValue = int.TryParse(m_UI.GetUserInput(), out index);
-            if (isIntValue) index = index - 1;
+            bool isIntValue = int.TryParse(m_UI.GetUserInput(), out var index);
+            if (isIntValue) index--;
 
             if (!isIntValue || index < 0 || index > 8 || m_Cells[index] != m_UI.EmptyCell)
             {
@@ -84,7 +83,7 @@ namespace Katas.TicTacToe
             else m_CurrentPlayer = m_Players[0];
         }
 
-        internal bool PlayerWins(char value)
+        public bool PlayerWins(char value)
         {
             for (int i = 0; i < 7; i = i + 3)
             {
@@ -102,7 +101,7 @@ namespace Katas.TicTacToe
             return false;
         }
 
-        internal bool IsDraw()
+        public bool IsDraw()
         {
             return !m_Cells.Any(a => a == m_UI.EmptyCell);
         }

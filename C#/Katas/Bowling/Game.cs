@@ -8,27 +8,28 @@ namespace Katas.Bowling
     {
         public const int MaxPins = 10;
         public const int MaxBalls = 2;
-        private const int s_FrameCount = 10;
-        private int m_CurrentFrameIndex;
-        internal IList<Frame> Frames { get; }
+        public IList<Frame> Frames { get; }
+
+        private const int FrameCount = 10;
+        private int currentFrameIndex;
 
         public Game()
         {
             Frames = new List<Frame>();
 
-            for (int i = 0; i < s_FrameCount; i++) Frames.Add(new Frame());
-            for (int i = 0; i < s_FrameCount - 1; i++) Frames[i].NextFrame = Frames[i + 1];
+            for (int i = 0; i < FrameCount; i++) Frames.Add(new Frame());
+            for (int i = 0; i < FrameCount - 1; i++) Frames[i].NextFrame = Frames[i + 1];
 
-            m_CurrentFrameIndex = 0;
+            currentFrameIndex = 0;
         }
 
         public void Throw(int pins)
         {
-            var frame = Frames[m_CurrentFrameIndex];
+            var frame = Frames[currentFrameIndex];
             frame.Throw(pins);
 
-            if (m_CurrentFrameIndex < s_FrameCount - 1 && (frame.GetThrowCount == MaxBalls || frame.Score() >= MaxPins))
-                m_CurrentFrameIndex++;
+            if (currentFrameIndex < FrameCount - 1 && (frame.GetThrowCount == MaxBalls || frame.Score() >= MaxPins))
+                currentFrameIndex++;
         }
 
         public string ScoreBoard()
@@ -36,7 +37,7 @@ namespace Katas.Bowling
             var scoreboard = new StringBuilder();
             var score = 0;
 
-            for (int i = 0; i < s_FrameCount; i++)
+            for (int i = 0; i < FrameCount; i++)
             {
                 score += Frames[i].Score();
                 string frame = $"Frame {i + 1}:";

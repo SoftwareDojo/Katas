@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("KatasTests")]
 
 namespace Katas.FearOfNumbers
 {
-    internal interface ILanguage
+    public interface ILanguage
     {
         string GetText(TextKey key);
         string[] DayNames { get; }
@@ -17,10 +16,10 @@ namespace Katas.FearOfNumbers
         IsNotOk,
         UnknownPatient,
         DuplicatePatient,
-        UnknownDay
+        UnknownDay,
     }
 
-    internal abstract class Language : ILanguage
+    public abstract class Language : ILanguage
     {
         public string[] DayNames { get; }
 
@@ -41,7 +40,7 @@ namespace Katas.FearOfNumbers
         }
     }
 
-    internal class GermanLanguage : Language
+    public class GermanLanguage : Language
     {
         public const string CultureName = "de-DE";
         public const string DisplayName = "deutsch";
@@ -56,7 +55,7 @@ namespace Katas.FearOfNumbers
         }
     }
 
-    internal class EnglishLanguage : Language
+    public class EnglishLanguage : Language
     {
         public const string CultureName = "en-US";
         public const string DisplayName = "english";

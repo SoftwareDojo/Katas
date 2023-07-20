@@ -3,12 +3,12 @@ using System.Globalization;
 using Katas.FearOfNumbers;
 using Xunit;
 
-namespace KatasTests.FearOfNumbers
+namespace KatasTests
 {
     public class FearOfNumbersTest
     {
-        private const string s_Karl = "Karl";
-        private const string s_Lenny = "Lenny";
+        private const string Karl = "Karl";
+        private const string Lenny = "Lenny";
 
         [Theory]
         [InlineData("montag", 12, TextKey.IsNotOk)]
@@ -102,7 +102,7 @@ namespace KatasTests.FearOfNumbers
         private void CheckNumber(IPatient patient, ILanguage language, string displayName, string dayOfWeek, int number, TextKey key)
         {
             // arrange
-            var fears = new Katas.FearOfNumbers.FearOfNumbers(displayName);
+            var fears = new FearOfNumbers(displayName);
             fears.AddPatient(patient);
 
             // act
@@ -121,11 +121,11 @@ namespace KatasTests.FearOfNumbers
             // arrange
             var language = new GermanLanguage();
             DateTime.TryParse(dateString, CultureInfo.CreateSpecificCulture("de-De"), DateTimeStyles.None, out DateTime date);
-            var fears = new Katas.FearOfNumbers.FearOfNumbers(date);
+            var fears = new FearOfNumbers(date);
             fears.AddPatient(GetKarl());
 
             // act
-            var actual = fears.CheckNumber(s_Karl, number);
+            var actual = fears.CheckNumber(Karl, number);
 
             // assert
             Assert.Equal(language.GetText(TextKey.IsNotOk), actual);
@@ -133,7 +133,7 @@ namespace KatasTests.FearOfNumbers
 
         private IPatient GetKarl()
         {
-            var patient = new Patient(s_Karl);
+            var patient = new Patient(Karl);
             patient.AddFear(DayOfWeek.Monday, number => number == 12);
             patient.AddFear(DayOfWeek.Tuesday, number => number > 95);
             patient.AddFear(DayOfWeek.Wednesday, number => number == 34);
@@ -147,7 +147,7 @@ namespace KatasTests.FearOfNumbers
 
         private IPatient GetLenny()
         {
-            var patient = new Patient(s_Lenny);
+            var patient = new Patient(Lenny);
             patient.AddFear(DayOfWeek.Monday, number => number % 3 == 0);
             patient.AddFear(DayOfWeek.Tuesday, number => number > 10);
             patient.AddFear(DayOfWeek.Wednesday, number => number == 22);

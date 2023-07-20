@@ -1,6 +1,7 @@
-﻿using Xunit;
+﻿using Katas;
+using Xunit;
 
-namespace KatasTests.Christmastree
+namespace KatasTests
 {
     public class ChristmastreeTests
     {
@@ -17,14 +18,7 @@ namespace KatasTests.Christmastree
         [InlineData(1, Tree1)]
         public void Draw_Tree(int height, string expected)
         {
-            // arrange
-            var tree = new Katas.Christmastree.Christmastree();
-
-            // act
-            var actual = tree.Draw(height);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, Christmastree.Draw(height));
         }
 
         [Theory]
@@ -33,14 +27,7 @@ namespace KatasTests.Christmastree
         [InlineData(1, TreeStar1)]
         public void Draw_Tree_With_Star(int height, string expected)
         {
-            // arrange
-            var tree = new Katas.Christmastree.Christmastree();
-
-            // act
-            var actual = tree.DrawWithStar(height);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, Christmastree.DrawWithStar(height));
         }
     }
 }

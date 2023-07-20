@@ -1,6 +1,7 @@
-﻿using Xunit;
+﻿using Katas;
+using Xunit;
 
-namespace KatasTests.LuckyNumbers
+namespace KatasTests
 {
     public class LuckyNumbersTest
     {
@@ -13,14 +14,7 @@ namespace KatasTests.LuckyNumbers
         [InlineData(100, "1,3,7,9,13,15,21,25,31,33,37,43,49,51,63,67,69,73,75,79,87,93,99")]
         public void GetLuckyNumbersTest(int value, string expected)
         {
-            // arrange
-            var lucky = new Katas.LuckyNumbers.LuckyNumbers();
-
-            // act
-            string actual = lucky.GetLuckyNumbers(value);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, LuckyNumbers.GetLuckyNumbers(value));
         }
 
         [Theory]
@@ -32,14 +26,7 @@ namespace KatasTests.LuckyNumbers
         [InlineData(100, "3,7,13,31,37,43,67,73,79")]
         public void GetLuckyPrimeNumbersTest(int value, string expected)
         {
-            // arrange
-            var lucky = new Katas.LuckyNumbers.LuckyNumbers();
-
-            // act
-            string actual = lucky.GetLuckyPrimeNumbers(value);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, LuckyNumbers.GetLuckyPrimeNumbers(value));
         }
     }
 }

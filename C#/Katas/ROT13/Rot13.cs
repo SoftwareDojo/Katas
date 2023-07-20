@@ -4,16 +4,16 @@ namespace Katas.ROT13
 {
     public class Rot13
     {
-        private const int s_DefaultOffset = 13;
-        private readonly IDictionary<int, int> m_EncodeTable;
-        private readonly IDictionary<int, int> m_DecodeTable;
+        private const int DefaultOffset = 13;
+        private readonly IDictionary<int, int> encodeTable;
+        private readonly IDictionary<int, int> decodeTable;
 
-        public Rot13() : this(s_DefaultOffset) { }
+        public Rot13() : this(DefaultOffset) { }
 
         public Rot13(int offset)
         {
-            m_EncodeTable = new Dictionary<int, int>();
-            m_DecodeTable = new Dictionary<int, int>();
+            encodeTable = new Dictionary<int, int>();
+            decodeTable = new Dictionary<int, int>();
 
             AddToTable('a', 'z', offset);
             AddToTable('A', 'Z', offset);
@@ -29,19 +29,19 @@ namespace Katas.ROT13
                     index = i - (end - start) + offset - 1;
                 }
 
-                m_EncodeTable.Add(i, index);
-                m_DecodeTable.Add(index, i);
+                encodeTable.Add(i, index);
+                decodeTable.Add(index, i);
             }
         }
 
         public string Encode(string text)
         {
-            return Translate(NormalizeText(text), m_EncodeTable);
+            return Translate(NormalizeText(text), encodeTable);
         }
 
         public string Decode(string text)
         {
-            return Translate(text, m_DecodeTable);
+            return Translate(text, decodeTable);
         }
 
         private string Translate(string text, IDictionary<int, int> table)

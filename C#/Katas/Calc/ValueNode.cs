@@ -1,5 +1,4 @@
-﻿
-namespace Katas.Calc
+﻿namespace Katas.Calc
 {
     public abstract class Node
     {
@@ -8,21 +7,21 @@ namespace Katas.Calc
 
     public class ValueNode : Node
     {
-        private readonly double m_Value;
+        private readonly double value;
 
         public ValueNode(double value)
         {
-            m_Value = value;
+            this.value = value;
         }
 
         public override double Evaluate()
         {
-            return m_Value;
+            return value;
         }
 
         public override string ToString()
         {
-            return m_Value.ToString();
+            return value.ToString();
         }
     }
 }

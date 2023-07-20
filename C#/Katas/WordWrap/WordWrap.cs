@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Katas.WordWrap
+namespace Katas
 {
-    public class WordWrap
+    public static class Text
     {
-        private const string s_WhiteSpace = " ";
-        private const string s_NewLine = "\n";
+        private const string SimpleWhiteSpace = " ";
+        private const string NewLine = "\n";
 
-        public string Wrap(string text, int length)
+        public static string Wrap(string text, int length)
         {
-            return string.Join(string.Empty,
-                Wrap(text.Split(new[] { s_WhiteSpace }, StringSplitOptions.RemoveEmptyEntries), length));
+            return string.Join(string.Empty, Wrap(text.Split(new[] { SimpleWhiteSpace }, StringSplitOptions.RemoveEmptyEntries), length));
         }
 
-        private IEnumerable<string> Wrap(IEnumerable<string> words, int lineLength)
+        private static IEnumerable<string> Wrap(IEnumerable<string> words, int lineLength)
         {
             var currentLength = 0;
             foreach (var word in words)
@@ -29,16 +28,16 @@ namespace Katas.WordWrap
             }
         }
 
-        private string ReturnNewLineOrWhiteSpace(ref int currentLength, int wordLength, int lineLength)
+        private static string ReturnNewLineOrWhiteSpace(ref int currentLength, int wordLength, int lineLength)
         {
             if (currentLength + wordLength < lineLength)
             {
                 currentLength++;
-                return s_WhiteSpace;
+                return SimpleWhiteSpace;
             }
 
             currentLength = 0;
-            return s_NewLine;
+            return NewLine;
         }
     }
 }

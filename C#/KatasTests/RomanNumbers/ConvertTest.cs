@@ -1,8 +1,9 @@
-﻿using Xunit;
+﻿using Katas.RomanNumbers;
+using Xunit;
 
 namespace KatasTests.RomanNumbers
 {
-    public class RomanNumbersTest
+    public class ConvertTest
     {
         [Theory]
         [InlineData("I", 1)]
@@ -19,14 +20,7 @@ namespace KatasTests.RomanNumbers
         [InlineData("XXXXIIII", 44)]
         public void TestSimpleConvertion(string value, int expected)
         {
-            // arrange
-            var target = new Katas.RomanNumbers.RomanNumbers();
-
-            // act
-            int actual = target.FromRomanToDecimal(value);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, Convert.FromRomanToDecimal(value));
         }
 
         [Theory]
@@ -41,14 +35,7 @@ namespace KatasTests.RomanNumbers
         [InlineData("MMMCMXCIX", 3999)]
         public void TestSubtractionConvertion(string value, int expected)
         {
-            // arrange
-            var target = new Katas.RomanNumbers.RomanNumbers();
-
-            // act
-            int actual = target.FromRomanToDecimal(value);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, Convert.FromRomanToDecimal(value));
         }
 
         [Theory]
@@ -65,14 +52,7 @@ namespace KatasTests.RomanNumbers
         [InlineData("MMCDIXX", 0)]
         public void TestSyntaxErrors(string value, int expected)
         {
-            // arrange
-            var target = new Katas.RomanNumbers.RomanNumbers();
-
-            // act
-            int actual = target.FromRomanToDecimal(value);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, Convert.FromRomanToDecimal(value));
         }
 
         [Theory]
@@ -100,14 +80,7 @@ namespace KatasTests.RomanNumbers
         [InlineData(4000, "")]
         public void ConvertArabicToRoman(int value, string expected)
         {
-            // arrange
-            var convert = new Katas.RomanNumbers.RomanNumbers();
-
-            // act
-            string actual = convert.FromArabicToRoman(value);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, Convert.FromArabicToRoman(value));
         }
     }
 }

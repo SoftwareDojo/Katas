@@ -1,5 +1,6 @@
-﻿using Xunit;
-using Katas.TicTacToe;
+﻿using Katas.TicTacToe;
+using Moq;
+using Xunit;
 
 namespace KatasTests.TicTacToe
 {
@@ -8,6 +9,11 @@ namespace KatasTests.TicTacToe
         private const char s_E = '0';
         private const char s_X = 'X';
         private const char s_O = 'O';
+        private readonly Player[] players = new[]
+            {
+                new Player("Player 1", s_X),
+                new Player("Player 2", s_O),
+            };
 
         [Theory]
         [InlineData(new[] { s_X, s_X, s_X, s_E, s_E, s_E, s_E, s_E, s_E })]
@@ -20,41 +26,14 @@ namespace KatasTests.TicTacToe
         [InlineData(new[] { s_E, s_E, s_X, s_E, s_X, s_E, s_X, s_E, s_E })]
         public void PlayerWins(char[] cells)
         {
-            // arrange
-            var players = new[]
-            {
-                new Player("Player 1", s_X),
-                new Player("Player 2", s_O)
-            };
-
-            var ttt = new TicTacToeGame(new MockConsole(), cells, players);
-
-            // act
-            bool result = ttt.PlayerWins(s_X);
-
-            // assert
-            Assert.True(result);
+            Assert.True(new TicTacToeGame(new Mock<IUserInterface>().Object, cells, players).PlayerWins(s_X));
         }
 
-        [Fact]
-        public void IsDraw()
+        [Theory]
+        [InlineData(new[] { s_X, s_X, s_X, s_O, s_O, s_O, s_X, s_X, s_X  })]
+        public void IsDraw(char[] cells)
         {
-            // arrange
-            var players = new[]
-            {
-                new Player("Player 1", s_X),
-                new Player("Player 2", s_O)
-            };
-
-            var cells = new[] { s_X, s_X, s_X, s_O, s_O, s_O, s_X, s_X, s_X };
-
-            var ttt = new TicTacToeGame(new MockConsole(), cells, players);
-
-            // act
-            bool result = ttt.IsDraw();
-
-            // assert
-            Assert.True(result);
+            Assert.True(new TicTacToeGame(new Mock<IUserInterface>().Object, cells, players).IsDraw());
         }
     }
 }

@@ -1,47 +1,32 @@
-﻿using Xunit;
+﻿using Katas;
+using Xunit;
 
-namespace KatasTests.CalcStats
+namespace KatasTests
 {
     public class CalcStatsTests
     {
         [Fact]
         public void GetMinValue()
         {
-            //arrange
-            //act
-            var actual = new Katas.CalcStats.CalcStats().GetStats("Min", new[] { 1, -1, 2, -2, 6, 9, 15, -2, 92, 11 });
-            //assert
-            Assert.Equal(-2, (int)actual);
+            Assert.Equal(-2, (int)CalcStats.GetStats("Min", new[] { 1, -1, 2, -2, 6, 9, 15, -2, 92, 11 }));
         }
 
         [Fact]
         public void GetMaxValue()
         {
-            //arrange
-            //act
-            var actual = new Katas.CalcStats.CalcStats().GetStats("Max", new[] { 1, -1, 2, -2, 6, 9, 15, -2, 92, 11 });
-            //assert
-            Assert.Equal(92, (int)actual);
+            Assert.Equal(92, (int)CalcStats.GetStats("Max", new[] { 1, -1, 2, -2, 6, 9, 15, -2, 92, 11 }));
         }
 
         [Fact]
         public void GetSumValue()
         {
-            //arrange
-            //act
-            var actual = new Katas.CalcStats.CalcStats().GetStats("Sum", new[] { 1, -1, 2, -2, 6, 9, 15, -2, 92, 11 });
-            //assert
-            Assert.Equal(131, (int)actual);
+            Assert.Equal(131, (int)CalcStats.GetStats("Sum", new[] { 1, -1, 2, -2, 6, 9, 15, -2, 92, 11 }));
         }
 
         [Fact]
         public void GetAverageValue()
         {
-            //arrange
-            //act
-            var actual = new Katas.CalcStats.CalcStats().GetStats("Average", new[] { 1, -1, 2, -2, 6, 9, 15, -2, 92, 11 });
-            //assert
-            Assert.Equal(13.1, (double)actual);
+            Assert.Equal(13.1, (double)CalcStats.GetStats("Average", new[] { 1, -1, 2, -2, 6, 9, 15, -2, 92, 11 }));
         }
     }
 }

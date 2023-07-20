@@ -8,7 +8,7 @@ namespace Katas.BankOCR
     {
         public string ReadText(string text)
         {
-            var lines = text.Split(new[] {Environment.NewLine}, StringSplitOptions.None);
+            var lines = text.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 
             var results = new List<string>();
             for (var i = 0; i < lines.Length; i += Digits.Height)

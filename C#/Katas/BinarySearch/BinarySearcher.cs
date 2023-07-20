@@ -1,17 +1,17 @@
 ﻿using System;
 
-namespace Katas.BinarySearch
+namespace Katas
 {
     public class BinarySearcher
     {
-        public int Search(int[] array, int value)
+        public static int Search(int[] array, int value)
         {
             if (array == null) throw new ArgumentNullException(nameof(array));
 
             return Search(array, 0, array.Length, value);
         }
 
-        public int Search(int[] array, int index, int length, int value)
+        public static int Search(int[] array, int index, int length, int value)
         {
             if (array == null) throw new ArgumentNullException(nameof(array));
             if (index < 0 || index >= array.Length) throw new ArgumentOutOfRangeException(nameof(index));
@@ -31,7 +31,7 @@ namespace Katas.BinarySearch
             return 0;
         }
 
-        internal int GetMedian(int low, int high)
+        public static int GetMedian(int low, int high)
         {
             return low + (high - low) / 2;
         }

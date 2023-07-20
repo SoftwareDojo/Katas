@@ -1,6 +1,7 @@
-﻿using Xunit;
+﻿using Katas;
+using Xunit;
 
-namespace KatasTests.Palindrome
+namespace KatasTests
 {
     public class PalindromeTests
     {
@@ -10,7 +11,7 @@ namespace KatasTests.Palindrome
         [InlineData("   ")]
         public void Empty_phrase_is_not_a_Palindrome(string phrase)
         {
-            Assert.False(Katas.Palindrome.Palindrome.IsValid(phrase));
+            Assert.False(Palindrome.IsValid(phrase));
         }
 
         [Theory]
@@ -19,7 +20,7 @@ namespace KatasTests.Palindrome
         [InlineData("No way")]
         public void Phrase_is_not_a_Palindrome(string phrase)
         {
-            Assert.False(Katas.Palindrome.Palindrome.IsValid(phrase));
+            Assert.False(Palindrome.IsValid(phrase));
         }
 
         [Theory]
@@ -31,7 +32,7 @@ namespace KatasTests.Palindrome
         [InlineData("a man a plan a canal panama")]
         public void Phrase_is_a_Palindrome(string phrase)
         {
-            Assert.True(Katas.Palindrome.Palindrome.IsValid(phrase));
+            Assert.True(Palindrome.IsValid(phrase));
         }
     }
 }

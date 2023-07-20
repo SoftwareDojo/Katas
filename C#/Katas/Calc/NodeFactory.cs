@@ -1,22 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Katas.Calc
 {
     public class NodeFactory
     {
-        private readonly IDictionary<string, Type> m_OperationNodes;
+        private readonly IDictionary<string, Type> operationNodes;
 
         public NodeFactory()
         {
-            m_OperationNodes = new Dictionary<string, Type>();
+            operationNodes = new Dictionary<string, Type>();
         }
 
         public void Register(string operation, Type nodeType)
         {
-            m_OperationNodes.Add(operation, nodeType);
+            operationNodes.Add(operation, nodeType);
         }
 
         public Node CreateNode(string expression)
@@ -26,12 +24,11 @@ namespace Katas.Calc
 
             for (int i = expressionValues.Length - 1; i >= 0; i--)
             {
-                Type operationType;
-                if (!m_OperationNodes.TryGetValue(expressionValues[i], out operationType))
+                if (!operationNodes.TryGetValue(expressionValues[i], out var operationType))
                 {
-                    ValueNode vNode = new ValueNode(Convert.ToDouble(expressionValues[i]));
-                    if (prevNode == null) prevNode = vNode;
-                    else ((OperationNode)prevNode).Left = vNode;
+                    var node = new ValueNode(Convert.ToDouble(expressionValues[i]));
+                    if (prevNode == null) prevNode = node;
+                    else ((OperationNode)prevNode).Left = node;
                     continue;
                 }
 

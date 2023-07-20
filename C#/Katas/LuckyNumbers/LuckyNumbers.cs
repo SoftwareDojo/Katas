@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Katas.LuckyNumbers
+namespace Katas
 {
     public class LuckyNumbers
     {
-        public string GetLuckyNumbers(int range)
+        public static string GetLuckyNumbers(int range)
         {
             return string.Join(",", FindLuckyNumbers(range));
         }
 
-        public string GetLuckyPrimeNumbers(int range)
+        public static string GetLuckyPrimeNumbers(int range)
         {
             var numbers = FindLuckyNumbers(range);
             RemovePrimes(numbers);
@@ -19,7 +19,7 @@ namespace Katas.LuckyNumbers
             return string.Join(",", numbers);
         }
 
-        private void RemovePrimes(IList<int> numbers)
+        private static void RemovePrimes(IList<int> numbers)
         {
             IList<int> toRemove = new List<int>();
             foreach (var number in numbers)
@@ -33,7 +33,7 @@ namespace Katas.LuckyNumbers
             }
         }
 
-        private IList<int> FindLuckyNumbers(int range)
+        private static IList<int> FindLuckyNumbers(int range)
         {
             IList<int> numbers = CreateRange(1, range);
 
@@ -46,7 +46,7 @@ namespace Katas.LuckyNumbers
             return numbers;
         }
 
-        private int RemoveNumbers(IList<int> numbers, int count)
+        private static int RemoveNumbers(IList<int> numbers, int count)
         {
             IList<int> toRemove = new List<int>();
             int index = -1 + count;
@@ -65,7 +65,7 @@ namespace Katas.LuckyNumbers
             return numbers.FirstOrDefault(n => n > count);
         }
 
-        private IList<int> CreateRange(int from, int to)
+        private static IList<int> CreateRange(int from, int to)
         {
             var numbers = new List<int>();
             for (int i = from; i <= to; i++)

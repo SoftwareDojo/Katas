@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Katas.ABC
+namespace Katas
 {
     public class ABCProblem
     {
-        private readonly IEnumerable<string> m_Blocks;
+        private readonly IEnumerable<string> blocks;
 
         public ABCProblem()
         {
-            m_Blocks = new List<string>
+            blocks = new List<string>
             {
                 "bo", "xk", "dq",
                 "cp", "na", "gt",
@@ -17,18 +17,18 @@ namespace Katas.ABC
                 "fs", "jw", "hu",
                 "vi", "an", "ob",
                 "er", "fs", "ly",
-                "pc", "zm"
+                "pc", "zm",
             };
         }
 
         public ABCProblem(IEnumerable<string> blocks)
         {
-            m_Blocks = blocks;
+            this.blocks = blocks;
         }
 
         public bool IsPossible(string word)
         {
-            var copyBlocks = new List<string>(m_Blocks);
+            var copyBlocks = new List<string>(blocks);
 
             foreach (var letter in word)
             {

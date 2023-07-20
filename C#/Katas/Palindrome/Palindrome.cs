@@ -1,5 +1,4 @@
-﻿
-namespace Katas.Palindrome
+﻿namespace Katas
 {
     public static class Palindrome
     {

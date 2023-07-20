@@ -1,6 +1,7 @@
-﻿using Xunit;
+﻿using Katas;
+using Xunit;
 
-namespace KatasTests.OddEven
+namespace KatasTests
 {
     public class OddEvenTest
     {
@@ -17,28 +18,14 @@ namespace KatasTests.OddEven
         [InlineData(10, "Even")]
         public void SingleOddEvenTest(int number, string expected)
         {
-            // arrange
-            var oddEven = new Katas.OddEven.OddEven();
-
-            // act
-            string actual = oddEven.Convert(number);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, OddEven.Convert(number));
         }
 
         [Fact]
         public void MultipleOddEvenTest()
         {
-            // arrange
-            var oddEven = new Katas.OddEven.OddEven();
-
-            // act
-            string actual = oddEven.ConvertRange(1, 10);
-
-            // assert
             string expected = "Odd Even 3 Even 5 Even 7 Even Odd Even";
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, OddEven.ConvertRange(1, 10));
         }
 
         [Theory]
@@ -54,14 +41,7 @@ namespace KatasTests.OddEven
         [InlineData(10, "Even")]
         public void StringOddEvenTest(int number, string expected)
         {
-            // arrange
-            var oddEven = new Katas.OddEven.OddEven();
-
-            // act
-            string actual = oddEven.ConvertWithString(number);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, OddEven.ConvertWithString(number));
         }
     }
 }

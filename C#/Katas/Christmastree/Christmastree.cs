@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Katas.Christmastree
+namespace Katas
 {
     public class Christmastree
     {
@@ -9,18 +9,18 @@ namespace Katas.Christmastree
         private const string X = "X";
         private const string Star = "*";
 
-        public string Draw(int height)
+        public static string Draw(int height)
         {
             return CreateTree(new List<string>(), height, 0);
         }
 
-        public string DrawWithStar(int height)
+        public static string DrawWithStar(int height)
         {
             var tree = new List<string> {CreateSymbols(CreateIndent(height - 1, 0), Star, 0)};
             return CreateTree(tree, height, 1);
         }
 
-        private string CreateTree(IList<string> tree, int height, int insertIndex)
+        private static string CreateTree(IList<string> tree, int height, int insertIndex)
         {
             tree.Add(CreateSymbols(CreateIndent(height - 1, 0), X, 0));
 
@@ -33,14 +33,14 @@ namespace Katas.Christmastree
             return string.Join(Environment.NewLine, tree);
         }
 
-        private string CreateIndent(int height, int position)
+        private static string CreateIndent(int height, int position)
         {
             string indent = string.Empty;
             for (int j = position; j < height; j++) indent += Space;
             return indent;
         }
 
-        private string CreateSymbols(string source, string symbole, int position)
+        private static string CreateSymbols(string source, string symbole, int position)
         {
             for (int j = 0; j < position * 2 + 1; j++) source += symbole;
             return source;

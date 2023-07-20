@@ -143,11 +143,7 @@ namespace KatasTests.Yatzy
 
         private void AreEqual(int[] dice, int expected, Func<int[], int> scoreAction)
         {
-            // act
-            int actual = scoreAction(dice);
-
-            // assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, scoreAction(dice));
         }
     }
 }
