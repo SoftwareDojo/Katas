@@ -1,6 +1,6 @@
 # Katas (csharpcode.de)
 
-Coding Katas with samples for C#, F# (.Net Core), Python and TypeScript. 
+Coding Katas with samples for C#, F#, Python and TypeScript. 
 # Catalogue
 
 Easy:
